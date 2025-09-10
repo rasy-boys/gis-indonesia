@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id" x-data="{ navOpen: false }" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Tim | GIS INDONESIA</title>
+    <link rel="icon" type="image/png" href="{{ asset('storage/logo1.png') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .all-info {
+    display: block !important;
+}
+
+.all-info .single-info {
+    display: block !important;
+    margin-bottom: 8px !important;
+}
+
+.all-info .single-info span {
+    font-weight: 600;
+    width: 120px; /* sesuaikan lebar label */
+    display: inline-block;
+}
+
+</style>
+
+</head>
+<body class="bg-white text-gray-800">
+
+
+@extends('layouts.layout1')
+
+@php
+    $title = 'About Us';
+    $subtitle = 'About';
+@endphp
+
+
+@section('content')
+
+
+
+
+
+<div class="breadcrumb-area bg_image tmp-section-gap breadcrumb-bg"
+style="background-image: url('{{ asset('assets/images/banner/detail-tim.png') }}'); background-size: cover; background-position: center;">
+       
+<div class="absolute inset-0 bg-black/50 z-0"></div>
+        
+<div class="container relative z-10">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="breadcrumb-inner text-center">
+                <h1 class="title split-collab">DETAIL TIM </h1>
+                <ul class="page-list">
+                    <li class="tmp-breadcrumb-item"><a href="/">Beranda</a></li>
+                    <li class="icon"><i class="fa-solid fa-angle-right"></i></li>
+                    <li class="tmp-breadcrumb-item active">Team</li>
+                </ul>
+                <div class="circle-1"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+     <!-- Start Team Details Area  -->
+     <div class="team-details-area tmp-section-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="team-details-thumb">
+                        <div class="bg-white border border-green-200 flex justify-center items-center 
+                        w-full max-w-[350px] h-[500px] rounded-lg shadow-md mx-auto overflow-hidden">
+                <img src="{{ $team->gambar ? asset('storage/' . $team->gambar) : asset('images/defaults/profile.png') }}"
+                     alt="team"
+                     class="object-contain w-[70%] h-[70%] rounded-lg">
+            </div>
+            
+                        
+                        
+                        
+                        <div class="content">
+                            <div class="author-info">
+                                <h4 class="name">{{ $team->nama }}</h4>
+                                <span class="designation">{{ $team->jabatan }}</span>
+                            </div>
+                            @if(!empty($team->deskripsi_singkat))
+                            <p class="description">
+                                {{ $team->deskripsi_singkat }}
+                            </p>
+                        @endif
+                        
+
+                            <div class="team-details-social">
+                                <ul class="social-icons solid-social-icons rounded-social-icons">
+                                    @if(!empty($team->facebook))
+                                        <li>
+                                            <a class="bg-transparent border-one-primary" href="{{ $team->facebook }}" target="_blank">
+                                                <i class="fa-brands fa-facebook-f"></i>
+                                            </a>
+                                        </li>
+                                    @endif
+                            
+                                    @if(!empty($team->linkedin))
+                                        <li>
+                                            <a class="bg-transparent border-one-primary" href="{{ $team->linkedin }}" target="_blank">
+                                                <i class="fa-brands fa-linkedin-in"></i>
+                                            </a>
+                                        </li>
+                                    @endif
+                            
+                                    @if(!empty($team->twitter))
+                                        <li>
+                                            <a class="bg-transparent border-one-primary" href="{{ $team->twitter }}" target="_blank">
+                                                <i class="fa-brands fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                    @endif
+                            
+                                    @if(!empty($team->instagram))
+                                        <li>
+                                            <a class="bg-transparent border-one-primary" href="{{ $team->instagram }}" target="_blank">
+                                                <i class="fa-brands fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                    @endif
+                            
+                                    @if(!empty($team->youtube))
+                                        <li>
+                                            <a class="bg-transparent border-one-primary" href="{{ $team->youtube }}" target="_blank">
+                                                <i class="fa-brands fa-youtube"></i>
+                                            </a>
+                                        </li>
+                                    @endif
+                                </ul>
+                            </div>
+                            
+                            
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="team-details-content">
+                        <div class="personal-info">
+                            <h3 class="title">Informasi Pribadi</h3>
+                            <p class="description">
+                                {{ $team->personal_info }}
+                            </p>
+                            
+                            <style>
+                            .description {
+                                max-width: 600px;       /* sesuaikan container */
+                                overflow-wrap: break-word;
+                                white-space: normal;
+                                line-height: 1.6;
+                            }
+                            </style>
+                            
+                            
+                        
+                            <div class="all-info">
+                                @if(!empty($team->no_telp))
+                                <div class="single-info">
+                                    <span>NO.Telepon:</span> {{ $team->no_telp }}
+                                </div>
+                            @endif
+                            
+                                <div class="single-info">
+                                    <span>E-mail:</span> {{ $team->email ?? '-' }}
+                                </div>
+                                <div class="single-info">
+                                    <span>Pengalaman:</span> {{ $team->pengalaman ?? '-' }}
+                                </div>
+
+
+                                <style>
+                                    .tagify {
+                                        width: auto !important;       /* width menyesuaikan isi */
+                                        min-width: 50px;              /* minimal kotak agar tidak terlalu kecil */
+                                        display: inline-block;
+                                    }
+                                
+                                    .tagify__input {
+                                        width: auto !important;       /* input juga mengikuti panjang teks */
+                                    }
+                                </style>
+                                
+                                <div class="single-info flex flex-wrap items-center gap-3">
+                                    <div class="flex items-center gap-2">
+                                        <span class="font-semibold">Keahlian:</span>
+                                        @php
+                                        $skills = json_decode($team->keahlian, true) ?? [];
+                                    @endphp
+                                    
+                                    <style>
+                                        .skill-box {
+                                            display: inline-flex !important;       /* buat fleksibel tapi tetap inline */
+                                            align-items: center;        /* vertical center */
+                                            justify-content: center;    /* horizontal center */
+                                            border: 1px solid black;
+                                            padding: 0.5rem 1rem;       /* py-2 px-4 */
+                                            font-size: 1.5rem;          /* text-2xl */
+                                            font-weight: bold;
+                                            border-radius: 0.25rem;
+                                            max-width: 100px;           /* opsional, supaya kotak tidak terlalu lebar */
+                                            white-space: nowrap;        /* supaya teks tidak wrap */
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;    /* potong teks yang terlalu panjang */
+                                        }
+                                        </style>
+                                        
+                                        @if(!empty($skills))
+                                            @foreach($skills as $skill)
+                                            <span class="skill-box">{{ $skill['value'] ?? '' }}</span>
+
+                                            @endforeach
+                                        @else
+                                            <span>-</span>
+                                        @endif
+                                        
+                                    
+                                    
+
+                                    </div>
+                                </div>
+                                
+                                
+                                @if(!empty($team->alamat))
+                                <div class="single-info">
+                                    <span>Alamat:</span> {{ $team->alamat }}
+                                </div>
+                            @endif
+                            
+                            </div>
+                        </div>
+                        
+
+
+                        @if(!empty($team->personal_experience))
+                        <div class="personal-experience">
+                            <h3 class="title">Pengalaman Pribadi</h3>
+                            <p class="description">
+                                {{ $team->personal_experience }}
+                            </p>
+                        </div>
+                    @endif
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-area footer-style-one-wrapper" 
+style="background-image: url('{{ asset('assets/images/footer/bg-03.png') }}'); background-repeat: no-repeat; background-size: cover;">
+
+<div class="container py-8">
+   
+    <div class="footer-main footer-style-one">
+        <div class="row g-5">
+            <div class="col-lg-4 col-md-6">
+                <div class="single-footer-wrapper border-right mr--20">
+                    <div class="logo">
+                        <a href="/">
+                            <img src="{{ asset('assets/images/logo/logo-03-2.png') }}" alt="logo"
+                                 class="w-[100px] md:w-[140px] lg:w-[200px] h-auto object-contain">
+                        </a>
+                    </div>
+
+                    <p class="description">
+                        Platform Geospasial Information System Indonesia
+                    </p>
+
+
+                    <div class="day-time">
+                        <div class="icon"><i class="fa-solid fa-alarm-clock"></i></div>
+                        <div class="content">
+                            <div class="day">Senin - Jumat</div>
+                            <div class="time">8:00  – 15:00 </div>
+                        </div>
+                    </div>
+
+                    <ul class="social-icons solid-social-icons rounded-social-icons">
+                        <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6">
+                <div class="single-footer-wrapper pl-50 pl_md--0 pl_sm--0">
+                    <h5 class="ft-title"> Link Cepat</h5>
+                    <ul class="ft-link">
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>
+                            <a href="/profile/latar-belakang">Profil</a>
+                        </li>
+                        <li>
+                            <a href="/profile/visi-misi">Visi-Misi</a>
+                        </li>
+                        <li>
+                            <a href="/team">Tim Kami</a>
+                        </li>
+                      
+
+                        <li>
+                            <a href="/galeri/foto">Foto & Video</a>
+                        </li>
+
+                        <li>
+                            <a href="/kontak">Kontak Kami</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="single-footer-wrapper pr--15">
+                    <h5 class="ft-title"> Postingan Terbaru</h5>
+            
+                    @foreach ($recentPosts as $recent)
+                    <div class="single-post flex items-start gap-3 mb-4">
+                        <div class="thumbnail w-16 h-16 overflow-hidden rounded">
+                            <a href="{{ route('info.berita.detail', $recent->slug) }}">
+                                <img src="{{ asset('storage/' . $recent->gambar) }}" alt="{{ $recent->judul }}" class="object-cover w-full h-full">
+                            </a>
+                        </div>
+                        <div class="content text-sm">
+                            <div class="date text-gray-500 text-xs mb-1">
+                                <i class="fa-light fa-calendar-days"></i>
+                                <span>{{ \Carbon\Carbon::parse($recent->tanggal)->translatedFormat('d M Y') }}</span>
+                            </div>
+                            <a href="{{ route('info.berita.detail', $recent->slug) }}" class="hover:underline">
+                                <h6 class="title font-medium leading-snug">
+                                    {{ Str::limit($recent->judul, 50) }}
+                                </h6>
+                            </a>
+                        </div>
+                    </div>
+                    @endforeach
+            
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="single-footer-wrapper">
+                    <h5 class="ft-title">Info Resmi:</h5>
+                    <ul class="ft-link">
+                        <li class="ft-location"> Jl. Mercurius No.4 Blk. C, RW.5, Ciherang, Kec. Dramaga, Kabupaten Bogor, Jawa Barat 16680</li>
+
+                        <li>
+                            <div class="single-contact">
+
+                                <div class="icon">
+                                    <i class="fa-solid fa-envelope-open-text"></i>
+                                </div>
+
+                                <div class="content">
+                                    <span>E-mail:</span>
+                                    <a href="mailto:sixgaming16@gmail.com">gisindonesia@gmail.com</a>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="single-contact">
+                                <div class="icon">
+                                    <i class="fa-light fa-phone"></i>
+                                </div>
+                                <div class="content">
+                                    <span>Phone:</span>
+                                    <a href="tel:+4733378901">+62 811-1919-711</a>
+                                </div>
+
+                            </div>
+
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</footer>
+<div class="copyright-area-one">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-wrapper">
+                <p>© Copyright 2025. All Rights Reserved by <a href="#">GIS</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    <!-- End Team Details Area  -->
+
+@endsection

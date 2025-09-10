@@ -1,0 +1,130 @@
+/*---------------------------
+ CSS Index  
+****************************
+
+01. Variables
+02. Typography
+03. Spacing
+04. Reset
+05. Forms
+06. Shortcode
+07. Common
+08. Animations
+09. Text Animation
+10. Sal
+11. extend
+12. header-one
+13. nav
+14. mobile-menu
+15. side-collups
+15. side-collups
+16.banner';
+17.section-title';
+18.services';
+19.social';
+20.button';
+21.blog';
+22.faq';
+23.product';
+24.team';
+25testimonial';
+26.banner';
+27testimonial-swiper';
+28.error';
+29.img-common-style';
+30.brand';
+31.progress-bar';
+32.icons-style';
+33.portfolio';
+34.pricing';
+35.counter';
+36.rating';
+37.work';
+38.taglist';
+39contact';
+40.tab';
+41.skills';
+42.quick-action';
+43.breadcrumb';
+44.team-details';
+45.ack-to-top';
+46.video';
+47.pagination';
+48.blog-details';
+49.pre-loader';
+50.about';
+51.projects-details';
+52.footers';
+----------------------------*/
+
+
+
+/*----Default Css----*/
+
+@use 'default/variables';
+@use 'default/typography';
+@use 'default/spacing';
+@use 'default/reset';
+@use 'default/forms';
+@use 'default/mixins';
+@use 'default/shortcode';
+@use 'default/common';
+@use 'default/animations';
+@use 'default/text-animation';
+@use 'default/sal';
+@use 'default/extend';
+
+
+/*----Headers Style----*/
+@use 'header/header-one';
+@use 'header/nav';
+@use 'header/mobile-menu.scss';
+@use 'header/side-collups';
+
+
+/*----Elements Style----*/
+@use 'elements/banner';
+@use 'elements/section-title';
+@use 'elements/services';
+@use 'elements/social';
+@use 'elements/button';
+@use 'elements/blog';
+@use 'elements/faq';
+@use 'elements/product';
+@use 'elements/team';
+@use 'elements/testimonial';
+@use 'elements/testimonial-swiper';
+@use 'elements/error';
+@use 'elements/img-common-style';
+@use 'elements/brand';
+@use 'elements/progress-bar';
+@use 'elements/icons-style';
+@use 'elements/portfolio';
+@use 'elements/pricing';
+@use 'elements/counter';
+@use 'elements/rating';
+@use 'elements/work';
+@use 'elements/taglist';
+@use 'elements/contact';
+@use 'elements/tab';
+@use 'elements/skills';
+@use 'elements/quick-action';
+@use 'elements/breadcrumb';
+@use 'elements/team-details';
+@use 'elements/back-to-top';
+@use 'elements/video';
+@use 'elements/pagination';
+@use 'elements/blog-details';
+@use 'elements/pre-loader';
+@use 'elements/language-picker';
+@use 'elements/mesonary';
+@use 'elements/working-process';
+@use 'elements/subscribe';
+
+/*----Template Style----*/
+@use 'template/about';
+@use 'template/projects-details';
+
+
+/*----Footer Style----*/
+@use 'footer/footer';
