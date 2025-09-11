@@ -135,7 +135,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="banner-startup-main-content-wrapper text-center">
-                                        <h1 class="title text-white">{{ $item->title }}</h1>
+                                        <h1 class="title text-white" style="font-size: 83px">{{ $item->title }}</h1>
                                         <p class="disc text-white">{{ $item->description }}</p>
                                         <a href="/kontak" class="tmp-btn btn-primary">Kontak Kami</a>
                                     </div>
@@ -199,7 +199,7 @@
     GIS Indonesia adalah platform website yang berfokus pada suatu hal yang berkaitan dengan data-data Geospasial di berbagai sektor. Data tersebut dapat membantu pemerintah atau industri dalam mengambil sebuah keputusan yang tepat dan strategis dari lokasi spasial yang dikaji. Kami menyediakan beberapa data spasial untuk beberapa daerah di Indonesia dan di perjual belikan pada platform E-Commerce kami.
 </p>
 
-     <!-- Three.js CDN -->
+  <!-- Three.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
 
 <div class="thumbnail-with-title">
@@ -224,36 +224,46 @@
   renderer.setSize(100, 100);
   document.getElementById("globe-container").appendChild(renderer.domElement);
 
-  // Create globe sphere
+  // Buat bola globe
   const geometry = new THREE.SphereGeometry(1, 64, 64);
   const textureLoader = new THREE.TextureLoader();
+
+  // GradientMap bawaan three.js untuk efek toon
+  const gradientMap = textureLoader.load("https://threejs.org/examples/textures/gradientMaps/fiveTone.jpg");
+  gradientMap.minFilter = THREE.NearestFilter; // biar efek toon tegas
+  gradientMap.magFilter = THREE.NearestFilter;
+
   const material = new THREE.MeshToonMaterial({
-    map: textureLoader.load("https://www.vecteezy.com/png/8507063-planet-earth-cartoon-3d-earth-in-second-preview-texture-for-clouds"),
-    gradientMap: textureLoader.load("https://threejs.org/examples/textures/gradientMaps/threeTone.jpg")
+    map: textureLoader.load("images/nasa.jpg"), // pakai file lokal kamu
+    gradientMap: gradientMap
   });
 
   const globe = new THREE.Mesh(geometry, material);
   scene.add(globe);
 
   // Lighting
-  const light = new THREE.PointLight(0xffffff, 1);
-  light.position.set(3, 3, 5);
+  const light = new THREE.DirectionalLight(0xffffff, 1);
+  light.position.set(5, 5, 5);
   scene.add(light);
 
-  // Camera position
+  const ambient = new THREE.AmbientLight(0x404040, 0.5); // cahaya lembut
+  scene.add(ambient);
+
+  // Kamera
   camera.position.z = 3;
 
-  // Animation
+  // Animasi
   let t = 0;
   function animate() {
     requestAnimationFrame(animate);
-    globe.rotation.y += 0.01;
-    globe.rotation.x = Math.sin(t) * 0.05;
+    globe.rotation.y += 0.01;         // rotasi horizontal
+    globe.rotation.x = Math.sin(t) * 0.05; // efek goyang
     t += 0.01;
     renderer.render(scene, camera);
   }
   animate();
 </script>
+
 
 
 
@@ -264,6 +274,166 @@
 </div>
 <!-- End Tentang Kami -->
 
+      <!-- Stats Section with Icons -->
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="icon"><i class="fas fa-project-diagram"></i></div>
+                <div class="stat-text">
+                    <h3>5,500+</h3>
+                    <p>Projects Handled</p>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="icon"><i class="fas fa-stream"></i></div>
+                <div class="stat-text">
+                    <h3>1.3B+</h3>
+                    <p>Streams Crawled</p>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="icon"><i class="fas fa-ticket-alt"></i></div>
+                <div class="stat-text">
+                    <h3>146M+</h3>
+                    <p>Ticket Conversations</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Jangan lupa link Font Awesome di head -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
+
+
+<!-- Trusted Section -->
+<section class="trusted-section">
+    <div class="container">
+        <div class="trusted-content">
+            <h2>Trusted by</h2>
+            <p>Over 500 B2B Brands & Clients</p>
+        </div>
+    </div>
+</section>
+
+
+
+ <style>
+    /* Trusted Section */
+   .trusted-section {
+    background: #7ce14a url('/images/bgt1.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 60px 20px;
+    text-align: center;
+    margin-bottom: 40px;
+   
+}
+
+.trusted-content {
+    display: flex;
+    justify-content: center; /* center horizontal */
+    align-items: center;     /* center vertical antar teks */
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.trusted-content h2 {
+    font-size: 48px;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 0;
+}
+
+.trusted-content p {
+    font-size: 38px;
+    color: #ffffff;
+    margin: 0;
+    margin-top: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .trusted-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .trusted-content h2 {
+        font-size: 36px;
+    }
+    .trusted-content p {
+        font-size: 24px;
+    }
+}
+
+
+ /* Stats Section */
+.stats-section {
+    background-color: #e6f4ea; /* hijau muda */
+    padding: 80px 20px; /* lebih tinggi */
+    text-align: center;
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 100px; /* lebih lebar jarak antar item */
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* jarak ikon dan teks lebih lega */
+    padding: 20px; /* biar ada ruang dalam */
+}
+
+.icon {
+    width: 80px;
+    height: 80px;
+    background-color: #2a7a42; /* hijau gelap */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 36px; /* ikon lebih besar */
+}
+
+.stat-text h3 {
+    font-size: 48px; /* angka lebih besar */
+    color: #2a7a42;
+    margin: 0;
+    font-weight: bold;
+}
+
+.stat-text p {
+    font-size: 20px; /* teks lebih besar */
+    color: #3a3a3a;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .stats-grid {
+        flex-direction: column;
+        gap: 40px; /* jarak antar item di mobile */
+    }
+    .stat-text h3 {
+        font-size: 32px;
+    }
+    .stat-text p {
+        font-size: 18px;
+    }
+    .icon {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+}
+
+
+</style>
 
 <!-- Ruang Lingkup -->
 <div class="service-area tmp-section-gapBottom" id="service">
