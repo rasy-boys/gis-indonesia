@@ -6,6 +6,8 @@
     <link rel="icon" type="image/png" href="{{ asset('storage/logo1.png') }}">
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ 
+
 </head>
 
    
@@ -28,7 +30,7 @@
 
 
 
-@extends('layouts.layout1')
+@extends('layouts.layout')
 
 
 
@@ -39,7 +41,7 @@
 <div class="breadcrumb-area bg_image tmp-section-gap breadcrumb-bg mb-7"
 style="background-image: url('{{ asset('assets/images/banner/faq.png') }}'); background-size: cover; background-position: center;">
 <div class="absolute inset-0 bg-black/50 z-0"></div>
-<div class="container relative z-10">
+<div class="container relative z-0">
 
     <div class="row">
         <div class="col-lg-12">
@@ -63,34 +65,35 @@ style="background-image: url('{{ asset('assets/images/banner/faq.png') }}'); bac
             <div class="row">
                 <div class="col-lg-12">
                     <div class="faq-accordion">
-                        <div class="accordion" id="accordionExample">
+                      
                             
-                            <div class="accordion" id="accordionExample">
-                                @foreach($faqs as $index => $faq)
-                                    <div class="accordion-item">
-                                        <div class="accordion-header" id="heading{{ $index }}">
-                                            <div class="accordion-button collapsed" data-bs-toggle="collapse" role="button" data-bs-target="#collapse{{ $index }}" aria-expanded="false" aria-controls="collapse{{ $index }}">
-                                                <div class="accordion-button-left">
-                                                    <i class="fa-regular fa-question"></i>
-                                                    <span>{{ $faq->question }}</span>
-                                                </div>
-                                                <div class="accordion-button-right">
-                                                    <i class="fa-sharp fa-light fa-arrow-right"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="collapse{{ $index }}" class="accordion-collapse collapse" aria-labelledby="heading{{ $index }}" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                {!! $faq->answer !!}
-                                            </div>
-                                        </div>
-                                        
+                        <div class="accordion" id="accordionExample">
+                            @foreach($faqs as $index => $faq)
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading{{ $index }}">
+                                    <button class="accordion-button collapsed flex justify-between items-center" 
+                                            type="button" data-bs-toggle="collapse" 
+                                            data-bs-target="#collapse{{ $index }}" 
+                                            aria-expanded="false" 
+                                            aria-controls="collapse{{ $index }}">
+                                        <span><i class="fa-regular fa-question mr-2"></i> {{ $faq->question }}</span>
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </button>
+                                </h2>
+                                <div id="collapse{{ $index }}" class="accordion-collapse collapse" 
+                                     aria-labelledby="heading{{ $index }}" 
+                                     data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        {!! $faq->answer !!}
                                     </div>
-                                @endforeach
                                 </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        
                                 
                             
-                        </div>
+                     
 
                         <div class="faq-buttom">
                             <h4 class="title">Masih Punya Pertanyaan, Kontak Kami ya?
@@ -104,6 +107,63 @@ style="background-image: url('{{ asset('assets/images/banner/faq.png') }}'); bac
     </div>
 </div>
 
+
+         <!-- CTA Section -->
+         <section class="cta-section">
+            <div class="cta-container">
+                <h2>Saatnya Meningkatkan Keputusan Strategis Bersama GIS Indonesia</h2>
+                {{-- <p>Data spasial akurat membantu Anda mengambil keputusan yang tepat, cepat, dan strategis.</p> --}}
+                <a href="/kontak" class="cta-btn">Hubungi Kami</a>
+            </div>
+        </section>
+        <style>
+            /* CTA Section */
+        /* CTA Section */
+        /* CTA Section */
+        .cta-section {
+            background: #7ce14a url('/images/bgt1.jpg') no-repeat center center;
+            /* hijau sedikit lebih gelap + putih hijau lembut */
+            background-size: cover;
+            color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+            /* border-radius: 12px; */
+            /* margin-bottom: 60px; */
+        }
+        
+        
+        .cta-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            color: #fff; /* teks putih */
+        }
+        
+        .cta-section p {
+            font-size: 23px;
+            margin-bottom: 30px;
+            color: #fff; /* teks putih */
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background: #fff;
+            color: rgb(35, 228, 32); /* hijau utama */
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-btn:hover {
+            background: #d8fadc; /* putih kehijauan */
+            color: #145a26;
+        }
+        
+        
+        </style>
 <footer class="footer-area footer-style-one-wrapper" 
 style="background-image: url('{{ asset('assets/images/footer/bg-03.png') }}'); background-repeat: no-repeat; background-size: cover;">
 
@@ -203,9 +263,9 @@ style="background-image: url('{{ asset('assets/images/footer/bg-03.png') }}'); b
             
             <div class="col-lg-3 col-md-6">
                 <div class="single-footer-wrapper">
-                    <h5 class="ft-title">Info Resmi:</h5>
+                    <h5 class="ft-title"> </h5>
                     <ul class="ft-link">
-                        <li class="ft-location"> Jl. Mercurius No.4 Blk. C, RW.5, Ciherang, Kec. Dramaga, Kabupaten Bogor, Jawa Barat 16680</li>
+                        <li class="ft-location"></li>
 
                         <li>
                             <div class="single-contact">

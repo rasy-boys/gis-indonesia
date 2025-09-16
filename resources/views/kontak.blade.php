@@ -25,7 +25,7 @@
         background-color: #ffffff !important;
     }
     </style>
-    @extends('layouts.layout1')
+    @extends('layouts.layout')
     
    
     
@@ -94,24 +94,7 @@
 
                             </div>
                         </li>
-
-                        <li>
-                            <div class="single-contact background-transparent">
-                                <div class="icon">
-                                    <i class="fa-solid fa-map-location-dot"></i>
-                                </div>
-                                <div class="content">
-                                    <span>Alamat</span>
-                                    <a class="contact-here" href="#">Jl. Mercurius No.4 Blk. C, RW.5, Ciherang, Kec. Dramaga, Kabupaten Bogor, Jawa Barat 16680</a>
-                                </div>
-                            </div>
-                        </li>
-
                     </ul>
-
-
-
-
                 </div>
 
             </div>
@@ -220,13 +203,7 @@
         </div>
     </div>
 </div>
-<!-- tmp contact area -->
 
-<div class="tmp-map-area tmp-sectiongapBottom">
-    <div class="map-area-flotimg-container">
-        <iframe src="{{ asset('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1426.5824183263346!2d106.74694961228202!3d-6.5736695950638575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c573d1f677e9%3A0xab6ed02c021f6d8d!2sPT.%20Triwala%20Mitra%20Bestari!5e0!3m2!1sid!2sid!4v1753843932812!5m2!1sid!2sid') }}" width="600" height="650" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-</div>
 
 
     <!-- Konten -->
@@ -328,9 +305,9 @@
                       
                       <div class="col-lg-3 col-md-6">
                           <div class="single-footer-wrapper">
-                              <h5 class="ft-title">Info Resmi:</h5>
+                              <h5 class="ft-title"></h5>
                               <ul class="ft-link">
-                                  <li class="ft-location"> Jl. Mercurius No.4 Blk. C, RW.5, Ciherang, Kec. Dramaga, Kabupaten Bogor, Jawa Barat 16680</li>
+                                  <li class="ft-location"> </li>
   
                                   <li>
                                       <div class="single-contact">

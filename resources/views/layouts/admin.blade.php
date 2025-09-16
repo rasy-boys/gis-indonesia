@@ -164,7 +164,7 @@ html, body {
         <!-- Sidebar -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="profile" class="brand-link">
+            <a href="{{ route('profile.edit') }}" class="brand-link">
                 <i class="fas fa-user-shield brand-image img-circle elevation-3"></i>
                 <span class="brand-text font-weight-light">Admin Dashboard</span>
             </a>

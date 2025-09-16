@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Lingkup;
-
 use Illuminate\Support\Facades\Storage;
 
 class RuangLingkupController extends Controller
@@ -16,6 +15,11 @@ class RuangLingkupController extends Controller
         return view('admin.ruang-lingkup.index', compact('lingkups'));
     }
 
+    public function create()
+    {
+        return view('admin.ruang-lingkup.create');
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -23,18 +27,17 @@ class RuangLingkupController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
         ]);
-    
+
         $path = $request->file('icon')->store('ruang-lingkup', 'public');
-    
-        \App\Models\Lingkup::create([
-            'icon' => $path, // ← simpan path file ke kolom icon
+
+        Lingkup::create([
+            'icon' => $path,
             'title' => $request->title,
             'description' => $request->description,
         ]);
-    
-        return redirect()->back()->with('success', 'Ruang lingkup berhasil ditambahkan.');
+
+        return redirect()->route('admin.ruang-lingkup.index')->with('success', 'Ruang lingkup berhasil ditambahkan.');
     }
-    
 
     public function edit($id)
     {
@@ -49,31 +52,38 @@ class RuangLingkupController extends Controller
             'title' => 'required|string',
             'description' => 'required|string',
         ]);
-    
+
         $item = Lingkup::findOrFail($id);
-    
-        // Jika ada file baru diunggah
+
         if ($request->hasFile('icon')) {
-            // Simpan file baru
+            // simpan file baru
             $path = $request->file('icon')->store('ruang-lingkup', 'public');
-    
-           
-    
+
+            // hapus file lama kalau ada
+            if ($item->icon && Storage::disk('public')->exists($item->icon)) {
+                Storage::disk('public')->delete($item->icon);
+            }
+
             $item->icon = $path;
         }
-    
-        // Update data lainnya
+
         $item->title = $request->title;
         $item->description = $request->description;
         $item->save();
-    
+
         return redirect()->route('admin.ruang-lingkup.index')->with('success', 'Ruang lingkup diperbarui.');
     }
-    
 
     public function destroy($id)
     {
-        Lingkup::findOrFail($id)->delete();
+        $item = Lingkup::findOrFail($id);
+
+        if ($item->icon && Storage::disk('public')->exists($item->icon)) {
+            Storage::disk('public')->delete($item->icon);
+        }
+
+        $item->delete();
+
         return back()->with('success', 'Ruang lingkup dihapus.');
     }
 }

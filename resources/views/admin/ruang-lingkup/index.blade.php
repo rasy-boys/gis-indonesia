@@ -17,34 +17,14 @@
             </div>
         @endif
 
-        {{-- Form Tambah --}}
-        <div class="card shadow-sm mb-4">
-            <div class="card-header bg-success text-white">
-                <i class="fas fa-plus-circle"></i> Tambah Ruang Lingkup
-            </div>
-            <div class="card-body">
-                <form id="formAddLingkup" action="{{ route('admin.ruang-lingkup.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-row align-items-center">
-                        <div class="col-md-3 mb-2">
-                            <input type="file" name="icon" class="form-control" required>
-                        </div>
-                        <div class="col-md-3 mb-2">
-                            <input type="text" name="title" placeholder="Judul" class="form-control" required>
-                        </div>
-                        <div class="col-md-4 mb-2">
-                            <input type="text" name="description" placeholder="Deskripsi" class="form-control" required>
-                        </div>
-                        <div class="col-md-2 mb-2">
-                            <button type="button" id="btnAddLingkup" class="btn btn-success w-100">
-                                <i class="fas fa-plus"></i> Tambah
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
+        {{-- tombol Tambah ruang lingkup --}}
+      
+ {{-- tombol Tambah ruang lingkup --}}
+ <div class="mb-3">
+    <a href="{{ route('admin.ruang-lingkup.create') }}" class="btn btn-success">
+        <i class="fas fa-plus-circle"></i> Tambah Ruang Lingkup
+    </a>
+</div>
         {{-- List Data --}}
         <div class="row">
             @forelse ($lingkups as $item)

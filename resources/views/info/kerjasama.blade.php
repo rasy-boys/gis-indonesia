@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-inner text-center">
-                        <h1 class="title split-collab">KerjaSama</h1>
+                        <h1 class="title split-collab">Kerja Sama</h1>
                         <ul class="page-list">
                             <li class="tmp-breadcrumb-item"><a href="/">Beranda</a></li>
                             <li class="icon"><i class="fa-solid fa-angle-right"></i></li>
@@ -60,38 +60,94 @@
         </div>
     </div>
 
-    <div class="brand-area mt-12 mb-16" style="margin-bottom: 6rem;">
-        <!-- Hilangkan tmp-section-gapBottom -->
-        <div class="container max-w-7xl mx-auto px-4">
+    <div class="brand-area my-24"> <!-- margin atas bawah 6rem -->
+        <div class="container max-w-[1200px] mx-auto px-4">
           <div class="row">
-            <div class="col-lg-12">
-                <div class="section-head mb-6"> <!-- kasih margin-bottom 1.5rem -->
-                    <div class="section-sub-title center-title">
-                        <img src="{{ asset('assets/images/services/icon2.png') }}" alt="Corporate_service">
-                        <span class="subtitle">Kerja Sama</span>
-                    </div>
-                    <h2 class="title split-collab">Kami Bekerja Sama Dengan</h2>
+            <div class="col-12">
+              <div class="section-head mb-6 text-center">
+                <div class="section-sub-title flex items-center justify-center gap-2 mb-2">
+                  <img src="{{ asset('assets/images/services/icon2.png') }}" alt="Corporate_service" class="w-7 h-7">
+                  <span class="subtitle text-sm font-semibold text-green-600">Kerja Sama</span>
                 </div>
+                <h2 class="title split-collab text-[28px] font-bold text-gray-900">Kami Bekerja Sama Dengan</h2>
+              </div>
             </div>
           </div>
-    
-          <div class="brand-inner" style="margin-top: 0.5rem;"> <!-- Hilangkan tmp-section-gapTop dan pakai margin-top kecil -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      
+          <div class="brand-inner mt-2">
+            <div class="brand-grid grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-4">
               @foreach ($logos as $logo)
-                <div class="flex justify-center items-center p-4 bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
+                <div class="brand-card bg-white rounded-xl shadow-md p-5 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                   <a href="{{ $logo->link }}" target="_blank" class="block">
-                    <img src="{{ asset('storage/' . $logo->logo) }}" alt="Brand Image" class="h-42 max-w-[180px] w-auto object-contain mx-auto" />
+                    <img src="{{ asset('storage/' . $logo->logo) }}" alt="Brand Image" class="max-w-[280px] max-h-[170px] w-auto h-auto object-contain mx-auto">
                   </a>
                 </div>
               @endforeach
             </div>
           </div>
         </div>
-    </div>
+      </div>
+      
     
       
   
+      
+         <!-- CTA Section -->
+<section class="cta-section">
+    <div class="cta-container">
+        <h2>Saatnya Meningkatkan Keputusan Strategis Bersama GIS Indonesia</h2>
+        {{-- <p>Data spasial akurat membantu Anda mengambil keputusan yang tepat, cepat, dan strategis.</p> --}}
+        <a href="/kontak" class="cta-btn">Hubungi Kami</a>
+    </div>
+</section>
+<style>
+    /* CTA Section */
+/* CTA Section */
+/* CTA Section */
+.cta-section {
+    background: #7ce14a url('/images/bgt1.jpg') no-repeat center center;
+    /* hijau sedikit lebih gelap + putih hijau lembut */
+    background-size: cover;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    /* border-radius: 12px; */
+    /* margin-bottom: 60px; */
+}
 
+
+.cta-section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    color: #fff; /* teks putih */
+}
+
+.cta-section p {
+    font-size: 23px;
+    margin-bottom: 30px;
+    color: #fff; /* teks putih */
+}
+
+.cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: rgb(35, 228, 32); /* hijau utama */
+    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: #d8fadc; /* putih kehijauan */
+    color: #145a26;
+}
+
+
+</style>
   <!-- Start Footer Area  -->
   <footer class="footer-area footer-style-one-wrapper" 
   style="background-image: url('{{ asset('assets/images/footer/bg-03.png') }}'); background-repeat: no-repeat; background-size: cover;">
@@ -193,11 +249,11 @@
               
               <div class="col-lg-3 col-md-6">
                   <div class="single-footer-wrapper">
-                      <h5 class="ft-title">Info Resmi:</h5>
-                      <ul class="ft-link">
-                          <li class="ft-location"> Jl. Mercurius No.4 Blk. C, RW.5, Ciherang, Kec. Dramaga, Kabupaten Bogor, Jawa Barat 16680</li>
+                    <h5 class="ft-title"></h5>
+                    <ul class="ft-link">
+                        <li class="ft-location"> </li>
 
-                          <li>
+                        <li>
                               <div class="single-contact">
 
                                   <div class="icon">

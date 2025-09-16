@@ -161,57 +161,52 @@
         
     
         <!-- Tabel untuk Desktop -->
-      <!-- Tabel untuk Desktop -->
-<!-- Tabel untuk Desktop -->
-<!-- Tabel untuk Desktop -->
-<!-- Tabel untuk Desktop -->
-<div class="d-none d-md-block">
-    <div class="table-responsive shadow rounded">
-        <table class="table table-hover align-middle mb-0 modern-table">
-            <thead>
-                <tr>
-                    <th>Nama</th>
-                    <th>Jabatan</th>
-                    <th>Pengalaman</th>
-                    <th>Keahlian</th>
-                    <th>Lihat</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($team as $t)
-                <tr>
-                    <td class="fw-bold text-start">{{ $t->nama }}</td>
-                    <td>{{ $t->jabatan }}</td>
-                    <td>{{ $t->pengalaman }} tahun</td>
-                    <td>
-                        @php
-                            $skills = json_decode($t->keahlian, true) ?? [];
-                        @endphp
-                    
-                        @if(!empty($skills))
-                            @foreach($skills as $skill)
-                            <span class="inline-block border border-black text-black text-lg font-semibold px-2 py-1 rounded mb-1 bg-white">
-                                {{ $skill['value'] ?? '' }}
-                            </span>
+     
+        <div class="d-none d-md-block">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0 modern-table">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Jabatan</th>
+                            <th>Pengalaman</th>
+                            <th>Keahlian</th>
+                            <th>Lihat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($team as $t)
+                        <tr>
+                            <td class="fw-bold text-start">{{ $t->nama }}</td>
+                            <td>{{ $t->jabatan }}</td>
+                            <td>{{ $t->pengalaman }} tahun</td>
+                            <td>
+                                @php
+                                    $skills = json_decode($t->keahlian, true) ?? [];
+                                @endphp
                             
-                            @endforeach
-                        @else
-                            -
-                        @endif
-                    </td>
-                    
-
-                    <td class="text-center">
-                        <a href="{{ route('team.show', $t->slug) }}" class="btn btn-outline-success btn-sm">
-                            <i class="fa fa-eye"></i> Detail
-                        </a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</div>
+                                @if(!empty($skills))
+                                    @foreach($skills as $skill)
+                                    <span class="inline-block border border-black text-black text-lg font-semibold px-2 py-1 rounded mb-1 bg-white">
+                                        {{ $skill['value'] ?? '' }}
+                                    </span>
+                                    @endforeach
+                                @else
+                                    -
+                                @endif
+                            </td>
+                            <td class="text-center">
+                                <a href="{{ route('team.show', $t->slug) }}" class="btn btn-outline-success btn-sm">
+                                    <i class="fa fa-eye"></i> Detail
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
 
 
 
@@ -377,7 +372,62 @@
    
  
 
+ <!-- CTA Section -->
+ <section class="cta-section">
+    <div class="cta-container">
+        <h2>Saatnya Meningkatkan Keputusan Strategis Bersama GIS Indonesia</h2>
+        {{-- <p>Data spasial akurat membantu Anda mengambil keputusan yang tepat, cepat, dan strategis.</p> --}}
+        <a href="/kontak" class="cta-btn">Hubungi Kami</a>
+    </div>
+</section>
+<style>
+    /* CTA Section */
+/* CTA Section */
+/* CTA Section */
+.cta-section {
+    background: #7ce14a url('/images/bgt1.jpg') no-repeat center center;
+    /* hijau sedikit lebih gelap + putih hijau lembut */
+    background-size: cover;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    /* border-radius: 12px; */
+    /* margin-bottom: 60px; */
+}
 
+
+.cta-section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    color: #fff; /* teks putih */
+}
+
+.cta-section p {
+    font-size: 23px;
+    margin-bottom: 30px;
+    color: #fff; /* teks putih */
+}
+
+.cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: rgb(35, 228, 32); /* hijau utama */
+    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: #d8fadc; /* putih kehijauan */
+    color: #145a26;
+}
+
+
+</style>
 <footer class="footer-area footer-style-one-wrapper" 
 style="background-image: url('{{ asset('assets/images/footer/bg-03.png') }}'); background-repeat: no-repeat; background-size: cover;">
 
@@ -476,9 +526,9 @@ style="background-image: url('{{ asset('assets/images/footer/bg-03.png') }}'); b
             
             <div class="col-lg-3 col-md-6">
                 <div class="single-footer-wrapper">
-                    <h5 class="ft-title">Info Resmi:</h5>
+                    <h5 class="ft-title"></h5>
                     <ul class="ft-link">
-                        <li class="ft-location"> Jl. Mercurius No.4 Blk. C, RW.5, Ciherang, Kec. Dramaga, Kabupaten Bogor, Jawa Barat 16680</li>
+                        <li class="ft-location"> </li>
 
                         <li>
                             <div class="single-contact">

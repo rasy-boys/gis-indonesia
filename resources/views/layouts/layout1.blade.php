@@ -36,37 +36,7 @@ body {
     <!-- tpm-header-area start -->
     <!-- tpm-header-area start -->
     <header class="tmp-header-area-start header-two header-four header--sticky">
-        <!-- header-top start -->
-        <div class="header-top-one">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="header-top-inner">
-                            <div class="left-information-area">
-                                <p class="left-top">0807-100-1500</p>
-                                <div class="location-area">
-                                    <i class="fa-light fa-location-dot"></i>
-                                    <a href="#">Bogor, Indonesia</a>
-                                </div>
-                                <div class="working-time">
-                                    <i class="fa-light fa-clock"></i>
-                                    <p>Jam Kerja: 8:00 AM – 15:00 PM</p>
-                                </div>
-                            </div>
-                            <div class="right-header-top">
-                                <div class="social-area-transparent">
-                                    <span>Follow on</span>
-                                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
        
 
         <div class="container">

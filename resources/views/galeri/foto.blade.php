@@ -69,7 +69,7 @@
     width: 100%;
     height: 250px; /* atur tinggi sesuai kebutuhan */
     object-fit: contain; /* biar gambar full, tidak terpotong */
-    background-color: #f5f5f5; /* kasih background biar rapi kalau aspect ratio beda */
+    background-color: #ffffff; /* kasih background biar rapi kalau aspect ratio beda */
     border-radius: 8px; /* opsional, kalau mau rounded */
 }
 
@@ -100,6 +100,28 @@
     font-weight: bold;
     border-radius: 999px;
 }
+
+/* ====== Badge Foto & Video (kanan atas) ====== */
+.album-media {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.album-media span {
+    background: rgba(0, 0, 0, 0.6); /* transparan biar gak ganggu cover */
+    color: #fff;
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+}
+
 
 /* ====== Overlay Hover ====== */
 .album-overlay {
@@ -178,6 +200,96 @@
     font-weight: bold;
 }
 
+/* ====== Search Bar ====== */
+/* ====== Search Bar ====== */
+.album-search-wrap {
+    display: flex;
+    flex-direction: column;   /* Biar konten ke bawah, bukan sejajar */
+    align-items: center;      /* Tetap rata tengah */
+    gap: 20px;                /* Jarak antara no-result dan search bar */
+    margin-bottom: 45px;
+}
+
+
+.album-search {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    max-width: 450px;
+    width: 100%;
+}
+
+.album-search-input {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+.album-search-input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+
+.album-search-btn {
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    border: none;
+    padding: 12px 18px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.album-search-btn:hover {
+    background: linear-gradient(135deg, #43A047, #1B5E20);
+}
+
+.no-result {
+    text-align: center;
+    padding: 40px 20px;
+    background: #f9fafb;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.no-result h4 {
+    font-size: 1.2rem;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.no-result h4 span {
+    color: #16a34a; /* hijau sama kaya theme kamu */
+    font-weight: bold;
+}
+
+.no-result .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #4CAF50, #2E7D32);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.no-result .back-btn:hover {
+    background: linear-gradient(135deg, #43A047, #1B5E20);
+}
+
 
 
   </style>
@@ -239,7 +351,31 @@
 
 
            {{-- TARUH DI TEMPAT LIST ALBUM --}}
-           
+           <div class="album-search-wrap">
+            @if($albums->isEmpty() && request('q'))
+    <div class="no-result">
+        <h4>
+            Tidak ada hasil untuk "<span>{{ request('q') }}</span>"
+        </h4>
+        <a href="{{ route('galeri.foto') }}" class="back-btn">
+            <i class="fa fa-arrow-left"></i> Kembali
+        </a>
+    </div>
+@endif
+
+            <form action="{{ route('galeri.foto') }}" method="GET" class="album-search">
+                <input 
+                    type="text" 
+                    name="q" 
+                    class="album-search-input" 
+                    placeholder="Cari album..." 
+                    value="{{ request('q') }}">
+                <button type="submit" class="album-search-btn">
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+        </div>
+        
            <div class="row">
             <div class="col-lg-12">
                 <div class="albums-grid">
@@ -281,7 +417,19 @@
                                     </div>
                                 @endif
                                 
-                                    <span class="badge-year">{{ $album->tahun }}</span>
+                                  <!-- Tahun kiri atas -->
+                                  @if($album->tahun)
+    <span class="badge-year">{{ $album->tahun }}</span>
+@endif
+
+
+                                    <!-- Foto & Video kanan atas -->
+                                    <div class="album-media">
+                                        <span><i class="fa-regular fa-images"></i> {{ $jumlahFoto }}</span>
+                                        <span><i class="fa-solid fa-video"></i> {{ $jumlahVideo }}</span>
+                                    </div>
+
+                                  
                                 
                                     <!-- Overlay hover -->
                                     <div class="album-overlay">
@@ -299,17 +447,7 @@
                                 </a>
                                 
         
-                                <div class="album-body">
-                                    <a class="album-title" href="{{ route('galeri.album-show', $album->id) }}">
-                                        {{ $album->nama }}
-                                    </a>
-        
-                                    <!-- jumlah foto & video di pojok kanan bawah -->
-                                    <div class="album-stats">
-                                        <span><i class="fa-regular fa-images"></i> {{ $jumlahFoto }} Foto</span>
-                                        <span><i class="fa-solid fa-video"></i> {{ $jumlahVideo }} Video</span>
-                                    </div>
-                                </div>
+                              
                             </div>
                         </div>
                     @empty
@@ -331,6 +469,62 @@
 
     
     
+         <!-- CTA Section -->
+<section class="cta-section">
+    <div class="cta-container">
+        <h2>Saatnya Meningkatkan Keputusan Strategis Bersama GIS Indonesia</h2>
+        {{-- <p>Data spasial akurat membantu Anda mengambil keputusan yang tepat, cepat, dan strategis.</p> --}}
+        <a href="/kontak" class="cta-btn">Hubungi Kami</a>
+    </div>
+</section>
+<style>
+    /* CTA Section */
+/* CTA Section */
+/* CTA Section */
+.cta-section {
+    background: #7ce14a url('/images/bgt1.jpg') no-repeat center center;
+    /* hijau sedikit lebih gelap + putih hijau lembut */
+    background-size: cover;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    /* border-radius: 12px; */
+    /* margin-bottom: 60px; */
+}
+
+
+.cta-section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    color: #fff; /* teks putih */
+}
+
+.cta-section p {
+    font-size: 23px;
+    margin-bottom: 30px;
+    color: #fff; /* teks putih */
+}
+
+.cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: rgb(35, 228, 32); /* hijau utama */
+    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: #d8fadc; /* putih kehijauan */
+    color: #145a26;
+}
+
+
+</style>
     <footer class="footer-area footer-style-one-wrapper" 
     style="background-image: url('{{ asset('assets/images/footer/bg-03.png') }}'); background-repeat: no-repeat; background-size: cover;">
   
@@ -429,10 +623,10 @@
                 
                 <div class="col-lg-3 col-md-6">
                     <div class="single-footer-wrapper">
-                        <h5 class="ft-title">Info Resmi:</h5>
+                        <h5 class="ft-title"> </h5>
                         <ul class="ft-link">
-                            <li class="ft-location"> Jl. Mercurius No.4 Blk. C, RW.5, Ciherang, Kec. Dramaga, Kabupaten Bogor, Jawa Barat 16680</li>
-
+                            <li class="ft-location"></li>
+    
                             <li>
                                 <div class="single-contact">
 

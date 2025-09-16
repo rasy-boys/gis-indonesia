@@ -456,7 +456,7 @@ style="background-image: url('{{ asset('assets/images/banner/visi1.jpg') }}'); b
 
     <div class="absolute inset-0 bg-black/50 z-0"></div>
                     
-    <div class="container relative z-10">
+    <div class="container relative z-0">
    <div class="row">
     
        <div class="col-lg-12">
@@ -585,6 +585,64 @@ style="background-image: url('{{ asset('assets/images/banner/visi1.jpg') }}'); b
     </div>
 </div>
 
+
+
+         <!-- CTA Section -->
+         <section class="cta-section">
+            <div class="cta-container">
+                <h2>Saatnya Meningkatkan Keputusan Strategis Bersama GIS Indonesia</h2>
+                {{-- <p>Data spasial akurat membantu Anda mengambil keputusan yang tepat, cepat, dan strategis.</p> --}}
+                <a href="/kontak" class="cta-btn">Hubungi Kami</a>
+            </div>
+        </section>
+        <style>
+            /* CTA Section */
+        /* CTA Section */
+        /* CTA Section */
+        .cta-section {
+            background: #7ce14a url('/images/bgt1.jpg') no-repeat center center;
+            /* hijau sedikit lebih gelap + putih hijau lembut */
+            background-size: cover;
+            color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+            /* border-radius: 12px; */
+            /* margin-bottom: 60px; */
+        }
+        
+        
+        .cta-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            color: #fff; /* teks putih */
+        }
+        
+        .cta-section p {
+            font-size: 23px;
+            margin-bottom: 30px;
+            color: #fff; /* teks putih */
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background: #fff;
+            color: rgb(35, 228, 32); /* hijau utama */
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-btn:hover {
+            background: #d8fadc; /* putih kehijauan */
+            color: #145a26;
+        }
+        
+        
+        </style>
 <footer class="footer-area footer-style-one-wrapper" 
 style="background-image: url('{{ asset('assets/images/footer/bg-03.png') }}'); background-repeat: no-repeat; background-size: cover;">
 
@@ -683,9 +741,9 @@ style="background-image: url('{{ asset('assets/images/footer/bg-03.png') }}'); b
             
             <div class="col-lg-3 col-md-6">
                 <div class="single-footer-wrapper">
-                    <h5 class="ft-title">Info Resmi:</h5>
+                    <h5 class="ft-title"></h5>
                     <ul class="ft-link">
-                        <li class="ft-location"> Jl. Mercurius No.4 Blk. C, RW.5, Ciherang, Kec. Dramaga, Kabupaten Bogor, Jawa Barat 16680</li>
+                        <li class="ft-location"> </li>
 
                         <li>
                             <div class="single-contact">

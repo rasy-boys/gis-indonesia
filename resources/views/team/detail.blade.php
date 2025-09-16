@@ -54,7 +54,7 @@ style="background-image: url('{{ asset('assets/images/banner/detail-tim.png') }}
        
 <div class="absolute inset-0 bg-black/50 z-0"></div>
         
-<div class="container relative z-10">
+<div class="container relative z-0">
     <div class="row">
         <div class="col-lg-12">
             <div class="breadcrumb-inner text-center">
@@ -153,10 +153,25 @@ style="background-image: url('{{ asset('assets/images/banner/detail-tim.png') }}
                 <div class="col-lg-7">
                     <div class="team-details-content">
                         <div class="personal-info">
-                            <h3 class="title">Informasi Pribadi</h3>
-                            <p class="description">
-                                {{ $team->personal_info }}
-                            </p>
+                            <div class="team-personal-info" style="margin-bottom: 2rem;">
+                                <h3 class="title" style="
+                                    font-size: 36px; 
+                                    font-weight: 600; 
+                                    color: #2d7a2f; 
+                                    margin-bottom: 20px;
+                                ">
+                                    Informasi Pribadi
+                                </h3>
+                                <p class="description" style="
+                                    font-size: 31; 
+                                    color: #333; 
+                                    line-height: 1.6; 
+                                    margin-bottom: 1rem;
+                                ">
+                                    {{ $team->personal_info }}
+                                </p>
+                                <hr style="border: 1px solid #000; margin: 2rem 0;">
+                            </div>
                             
                             <style>
                             .description {
@@ -169,91 +184,89 @@ style="background-image: url('{{ asset('assets/images/banner/detail-tim.png') }}
                             
                             
                         
-                            <div class="all-info">
-                                @if(!empty($team->no_telp))
-                                <div class="single-info">
-                                    <span>NO.Telepon:</span> {{ $team->no_telp }}
-                                </div>
-                            @endif
-                            
-                                <div class="single-info">
-                                    <span>E-mail:</span> {{ $team->email ?? '-' }}
-                                </div>
-                                <div class="single-info">
-                                    <span>Pengalaman:</span> {{ $team->pengalaman ?? '-' }}
-                                </div>
+                            <style>
+                                .all-info .single-info {
+                                    margin-bottom: 20px !important;
+                                }
+                                .team-details-content .personal-info {
+                                    padding-bottom: 30px;
+                                    border-bottom: 0px solid #E7E7E7;
+                                }
 
+                                .all-info {
+    margin-top: 40px;
+}
 
-                                <style>
-                                    .tagify {
-                                        width: auto !important;       /* width menyesuaikan isi */
-                                        min-width: 50px;              /* minimal kotak agar tidak terlalu kecil */
-                                        display: inline-block;
-                                    }
                                 
-                                    .tagify__input {
-                                        width: auto !important;       /* input juga mengikuti panjang teks */
-                                    }
                                 </style>
                                 
-                                <div class="single-info flex flex-wrap items-center gap-3">
-                                    <div class="flex items-center gap-2">
-                                        <span class="font-semibold">Keahlian:</span>
-                                        @php
-                                        $skills = json_decode($team->keahlian, true) ?? [];
-                                    @endphp
-                                    
-                                    <style>
-                                        .skill-box {
-                                            display: inline-flex !important;       /* buat fleksibel tapi tetap inline */
-                                            align-items: center;        /* vertical center */
-                                            justify-content: center;    /* horizontal center */
-                                            border: 1px solid black;
-                                            padding: 0.5rem 1rem;       /* py-2 px-4 */
-                                            font-size: 1.5rem;          /* text-2xl */
-                                            font-weight: bold;
-                                            border-radius: 0.25rem;
-                                            max-width: 100px;           /* opsional, supaya kotak tidak terlalu lebar */
-                                            white-space: nowrap;        /* supaya teks tidak wrap */
-                                            overflow: hidden;
-                                            text-overflow: ellipsis;    /* potong teks yang terlalu panjang */
-                                        }
-                                        </style>
-                                        
-                                        @if(!empty($skills))
-                                            @foreach($skills as $skill)
-                                            <span class="skill-box">{{ $skill['value'] ?? '' }}</span>
-
-                                            @endforeach
-                                        @else
-                                            <span>-</span>
-                                        @endif
-                                        
-                                    
-                                    
-
+                                <div class="all-info">
+                                    @if(!empty($team->no_telp))
+                                    <div class="single-info">
+                                        <span>NO.Telepon:</span> {{ $team->no_telp }}
                                     </div>
+                                    @endif
+                                
+                                    <div class="single-info">
+                                        <span>E-mail:</span> {{ $team->email ?? '-' }}
+                                    </div>
+                                
+                                    <div class="single-info">
+                                        <span>Pengalaman:</span> {{ $team->pengalaman ?? '-' }} tahun
+                                    </div>
+                                
+                                    <div class="single-info flex flex-wrap items-center gap-3">
+                                        <div class="flex items-center gap-2">
+                                            <span class="font-semibold">Keahlian:</span>
+                                            @php
+                                                $skills = json_decode($team->keahlian, true) ?? [];
+                                            @endphp
+                                            @if(!empty($skills))
+                                                @foreach($skills as $skill)
+                                                    <span class="skill-box">{{ $skill['value'] ?? '' }}</span>
+                                                @endforeach
+                                            @else
+                                                <span>-</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                
+                                    @if(!empty($team->alamat))
+                                    <div class="single-info">
+                                        <span>Alamat:</span> {{ $team->alamat }}
+                                    </div>
+                                    @endif
                                 </div>
                                 
-                                
-                                @if(!empty($team->alamat))
-                                <div class="single-info">
-                                    <span>Alamat:</span> {{ $team->alamat }}
-                                </div>
-                            @endif
-                            
-                            </div>
                         </div>
                         
 
+                            <!-- Garis pemisah -->
+<hr style="border: 1px solid #000; margin: 2rem 0;">
 
                         @if(!empty($team->personal_experience))
-                        <div class="personal-experience">
-                            <h3 class="title">Pengalaman Pribadi</h3>
-                            <p class="description">
+                        <div class="personal-experience" style="margin-bottom: 2rem;">
+                            <h3 class="title" style="
+                                font-size: 36px;
+                                font-weight: 600;
+                                color: #2d7a2f;
+                                margin-bottom: 20px;
+                            ">
+                                Pengalaman Pribadi
+                            </h3>
+                            <p class="description" style="
+                            font-size: 31; 
+                            color: #333; 
+                            line-height: 1.6; 
+                            margin-bottom: 1rem;
+                        ">
+                            {{ $team->personal_info }}
+                        
                                 {{ $team->personal_experience }}
                             </p>
+                           
                         </div>
+                        
                     @endif
                     
                     </div>
@@ -261,6 +274,23 @@ style="background-image: url('{{ asset('assets/images/banner/detail-tim.png') }}
             </div>
         </div>
     </div>
+
+    <style>
+        .skill-box {
+            display: inline-flex !important;       /* buat fleksibel tapi tetap inline */
+            align-items: center;        /* vertical center */
+            justify-content: center;    /* horizontal center */
+            border: 1px solid black;
+            padding: 0.5rem 1rem;       /* py-2 px-4 */
+            font-size: 1.5rem;          /* text-2xl */
+            font-weight: bold;
+            border-radius: 0.25rem;
+            max-width: 100px;           /* opsional, supaya kotak tidak terlalu lebar */
+            white-space: nowrap;        /* supaya teks tidak wrap */
+            overflow: hidden;
+            text-overflow: ellipsis;    /* potong teks yang terlalu panjang */
+        }
+        </style>
 
     <footer class="footer-area footer-style-one-wrapper" 
 style="background-image: url('{{ asset('assets/images/footer/bg-03.png') }}'); background-repeat: no-repeat; background-size: cover;">
@@ -360,9 +390,9 @@ style="background-image: url('{{ asset('assets/images/footer/bg-03.png') }}'); b
             
             <div class="col-lg-3 col-md-6">
                 <div class="single-footer-wrapper">
-                    <h5 class="ft-title">Info Resmi:</h5>
+                    <h5 class="ft-title"></h5>
                     <ul class="ft-link">
-                        <li class="ft-location"> Jl. Mercurius No.4 Blk. C, RW.5, Ciherang, Kec. Dramaga, Kabupaten Bogor, Jawa Barat 16680</li>
+                        <li class="ft-location"> </li>
 
                         <li>
                             <div class="single-contact">

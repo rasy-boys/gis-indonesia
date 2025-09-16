@@ -3,7 +3,7 @@
         <!-- HOME -->
         <li>
             <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">
-                <i class="fas fa-home"></i> HOME
+                <i class="fas fa-home"></i> BERANDA
             </a>
         </li>
 
@@ -18,7 +18,7 @@
     <div class="submenu-left">
         <!-- Judul kolom -->
         <h4 class="submenu-title" style="margin-bottom: 13.1px; padding-left: 0;">
-            Profil Perusahaan
+            Tentang Kami
         </h4>
         
         <!-- Item submenu -->
@@ -31,7 +31,7 @@
         </a>
     
         <!-- Card di bawah item -->
-        <div class="submenu-card" style="margin-left: 10px; margin-bottom: 26px;">
+        <div class="submenu-card" style="margin-left: 10px; margin-bottom: 26px;">n
             GIS Indonesia menyediakan data geospasial akurat untuk mendukung keputusan strategis.
         </div>
     </div>
@@ -51,7 +51,7 @@
     
         <!-- Card di luar submenu-item -->
         <div class="submenu-card" style="margin-left: 10px; margin-bottom: 26px;">
-            GIS Indonesia berkomitmen menyediakan data geospasial akurat untuk mendukung keputusan strategis.
+       GIS Indonesia berkomitmen menyediakan data geospasial akurat untuk keputusan strategis.
         </div>
         
     </div>
@@ -104,31 +104,32 @@
     <a href="/info/berita" class="submenu-item">
         <i class="fas fa-newspaper"></i>
         <div class="text">
-            <span class="title">Berita</span>
+                <span class="title">Berita</span>
             <span class="desc">Update terbaru mengenai perusahaan</span>
-        </div>
-    </a>
+            </div>
+            </a>
 
-       <!-- Card di luar submenu-item -->
-       <!-- Card di luar submenu-item -->
-       <div class="submenu-card" style="margin-left: 10px; margin-bottom: 26px;">
-        GIS Indonesia berkomitmen menyediakan data geospasial akurat untuk mendukung keputusan strategis.
-    </div>
+            <!-- Card di luar submenu-item -->
+            <div class="submenu-card" style="margin-left: 10px; margin-bottom: 26px;">
+                GIS Indonesia menghadirkan berita terbaru untuk informasi strategis dan terkini.
+            </div>
+
     
 
 
     <a href="/info/pelatihan_dan_perdampingan" class="submenu-item">
         <i class="fas fa-chalkboard-teacher"></i>
         <div class="text">
-            <span class="title">Pelatihan</span>
-            <span class="desc">Program pelatihan dan pendampingan</span>
-        </div>
-    </a>
+          <span class="title">Pelatihan</span>
+<span class="desc">Program pelatihan dan pendampingan</span>
+</div>
+</a>
 
-       <!-- Card di luar submenu-item -->
-       <div class="submenu-card" style="margin-left: 10px; margin-bottom: 26px;">
-        GIS Indonesia berkomitmen menyediakan data geospasial akurat untuk mendukung keputusan strategis.
-    </div>
+<!-- Card di luar submenu-item -->
+<div class="submenu-card" style="margin-left: 10px; margin-bottom: 26px;">
+    GIS Indonesia menyelenggarakan pelatihan dan pendampingan untuk kemampuan geospasial.
+</div>
+
 </div>
 
 
@@ -140,27 +141,28 @@
             <i class="fas fa-handshake"></i>
             <div class="text">
                 <span class="title">Kerjasama</span>
-                <span class="desc">Kolaborasi dengan mitra strategis</span>
-            </div>
-        </a>
-    
-           <!-- Card di luar submenu-item -->
-           <div class="submenu-card" style="margin-left: 10px; margin-bottom: 26px;">
-            GIS Indonesia berkomitmen menyediakan data geospasial akurat untuk mendukung keputusan strategis.
-        </div>
+             <span class="desc">Kolaborasi dengan mitra strategis</span>
+                </div>
+                </a>
+
+                <!-- Card di luar submenu-item -->
+                <div class="submenu-card" style="margin-left: 10px; margin-bottom: 26px;">
+                    GIS Indonesia menjalin kerjasama dengan mitra strategis untuk pengembangan data geospasial.
+                </div>
 
         <a href="/info/faq" class="submenu-item">
             <i class="fas fa-question-circle"></i>
             <div class="text">
-                <span class="title">FAQ</span>
+               <span class="title">FAQ</span>
                 <span class="desc">Pertanyaan umum dan jawabannya</span>
-            </div>
-        </a>
+                </div>
+                </a>
 
-           <!-- Card di luar submenu-item -->
-           <div class="submenu-card" style="margin-left: 10px; margin-bottom: 26px;">
-            GIS Indonesia berkomitmen menyediakan data geospasial akurat untuk mendukung keputusan strategis.
-        </div>
+                <!-- Card di luar submenu-item -->
+                <div class="submenu-card" style="margin-left: 10px; margin-bottom: 26px;">
+                    GIS Indonesia menyediakan jawaban atas pertanyaan umum terkait layanan dan data geospasial.
+                </div>
+
     </div>
     
 
@@ -170,14 +172,16 @@
         <a href="/kontak" class="submenu-item">
             <i class="fas fa-envelope"></i>
             <div class="text">
-                <span class="title">Hubungi Kami</span>
+              <span class="title">Hubungi Kami</span>
                 <span class="desc">Kirim pesan atau ajukan pertanyaan</span>
-            </div>
-        </a>
-           <!-- Card di luar submenu-item -->
-           <div class="submenu-card" style="margin-left: 10px; margin-bottom: 26px;">
-            GIS Indonesia berkomitmen menyediakan data geospasial akurat untuk mendukung keputusan strategis.
-        </div>
+                </div>
+                </a>
+
+                <!-- Card di luar submenu-item -->
+                <div class="submenu-card" style="margin-left: 10px; margin-bottom: 26px;">
+                    Hubungi GIS Indonesia untuk mendapatkan informasi dan bantuan seputar data geospasial.
+                </div>
+
     </div>
     
     
@@ -469,7 +473,7 @@ row-gap: 15px !important;     /* misal tetap 15px antar baris */
 }
 .submenu-right .illustration2 {
     background-image: url('/images/news.png');
-    margin-top: 0px !important;
+    margin-top: 40px !important;
 }
 
 /* overlay link di gambar */

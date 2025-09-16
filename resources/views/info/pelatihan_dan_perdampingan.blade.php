@@ -50,10 +50,31 @@
 
 <!-- Pamflet Aktif -->
 <div class="pamflet-section container my-5">
-    <h2 class="mb-4" style="color:#2d7a2f; font-weight:600; text-align:center;">
+    <h2 class="mb-4" style="color:#2d7a2f; font-weight:600; text-align:center; font-size:36px;">
         Pamflet Yang Akan Datang
     </h2>
     
+    @if($comingSoon->isEmpty())
+    <div style="
+        text-align: center; 
+        color: #2d7a2f; 
+        font-style: normal; 
+        font-weight: 600;
+        background: #e6f4ea; 
+        padding: 20px; 
+        border-radius: 12px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        gap: 10px;
+        max-width: 500px;
+        margin: 0 auto;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    ">
+        <i class="fa-solid fa-circle-info" style="font-size:24px;"></i>
+        <span>Belum ada pamflet yang akan datang saat ini.</span>
+    </div>
+@else
     <div class="pamflet-grid">
         @foreach ($comingSoon as $pamflet)
         <a href="{{ route('pamflet.show', $pamflet->id) }}" class="pamflet-card" title="{{ $pamflet->judul }}">
@@ -67,11 +88,33 @@
         </a>
         @endforeach
     </div>
+@endif
 </div>
 
 <!-- Pamflet Expired -->
 <div class="pamflet-section container my-5">
-    <h2 class="mb-4" style="font-weight:600;  text-align:center;">Pamflet yang Sudah Terlaksana</h2>
+    <h2 class="mb-4" style="font-weight:600;  text-align:center; font-size:36px;">Pamflet yang Sudah Terlaksana</h2>
+    @if($expired->isEmpty())
+    <div style="
+        text-align: center; 
+        color: #b91c1c; /* merah gelap untuk expired */
+        font-style: normal; 
+        font-weight: 600;
+        background: #fee2e2; /* merah muda lembut */
+        padding: 20px; 
+        border-radius: 12px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        gap: 10px;
+        max-width: 500px;
+        margin: 0 auto;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    ">
+        <i class="fa-solid fa-circle-exclamation" style="font-size:24px;"></i>
+        <span>Belum ada pamflet yang sudah berakhir saat ini.</span>
+    </div>
+@else
     <div class="pamflet-grid">
         @foreach ($expired as $pamflet)
         <a href="{{ route('pamflet.show', $pamflet->id) }}" class="pamflet-card expired" title="{{ $pamflet->judul }}">
@@ -85,6 +128,8 @@
         </a>
         @endforeach
     </div>
+@endif
+
 </div>
 
 <style>
@@ -214,17 +259,63 @@
 </style>
 
 
-
-
     
-    
+         <!-- CTA Section -->
+<section class="cta-section">
+    <div class="cta-container">
+        <h2>Saatnya Meningkatkan Keputusan Strategis Bersama GIS Indonesia</h2>
+        {{-- <p>Data spasial akurat membantu Anda mengambil keputusan yang tepat, cepat, dan strategis.</p> --}}
+        <a href="/kontak" class="cta-btn">Hubungi Kami</a>
+    </div>
+</section>
+<style>
+    /* CTA Section */
+/* CTA Section */
+/* CTA Section */
+.cta-section {
+    background: #7ce14a url('/images/bgt1.jpg') no-repeat center center;
+    /* hijau sedikit lebih gelap + putih hijau lembut */
+    background-size: cover;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    /* border-radius: 12px; */
+    /* margin-bottom: 60px; */
+}
 
-    
+
+.cta-section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    color: #fff; /* teks putih */
+}
+
+.cta-section p {
+    font-size: 23px;
+    margin-bottom: 30px;
+    color: #fff; /* teks putih */
+}
+
+.cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: rgb(35, 228, 32); /* hijau utama */
+    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: #d8fadc; /* putih kehijauan */
+    color: #145a26;
+}
 
 
-
-
-
+</style>
     <!-- Footer -->
     <footer class="footer-area footer-style-one-wrapper" 
     style="background-image: url('{{ asset('assets/images/footer/bg-03.png') }}'); background-repeat: no-repeat; background-size: cover;">
@@ -326,10 +417,10 @@
                 
                 <div class="col-lg-3 col-md-6">
                     <div class="single-footer-wrapper">
-                        <h5 class="ft-title">Info Resmi:</h5>
+                        <h5 class="ft-title"></h5>
                         <ul class="ft-link">
-                            <li class="ft-location"> Jl. Mercurius No.4 Blk. C, RW.5, Ciherang, Kec. Dramaga, Kabupaten Bogor, Jawa Barat 16680</li>
-  
+                            <li class="ft-location"> </li>
+
                             <li>
                                 <div class="single-contact">
   

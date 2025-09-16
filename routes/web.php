@@ -139,10 +139,12 @@ Route::middleware(['auth', \App\Http\Middleware\IsAdmin::class])
 ->prefix('admin')
 ->group(function () {
     Route::get('/ruang-lingkup', [RuangLingkupController::class, 'index'])->name('admin.ruang-lingkup.index');
+    Route::get('/ruang-lingkup/create', [RuangLingkupController::class, 'create'])->name('admin.ruang-lingkup.create');
     Route::post('/ruang-lingkup', [RuangLingkupController::class, 'store'])->name('admin.ruang-lingkup.store');
     Route::get('/ruang-lingkup/{id}/edit', [RuangLingkupController::class, 'edit'])->name('admin.ruang-lingkup.edit');
     Route::put('/ruang-lingkup/{id}', [RuangLingkupController::class, 'update'])->name('admin.ruang-lingkup.update');
     Route::delete('/ruang-lingkup/{id}', [RuangLingkupController::class, 'destroy'])->name('admin.ruang-lingkup.destroy');
+    
     Route::get('/latar-belakang/edit', [LatarBelakangController::class, 'edit'])->name('admin.latar-belakang.edit');
       
     Route::get('/galeri/album/{album}', [GaleriFotoController::class, 'showAlbum'])->name('admin.galeri.album.show');

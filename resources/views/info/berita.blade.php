@@ -15,34 +15,7 @@
   margin-bottom: 1rem; /* atau 0.5rem kalau mau lebih dekat */
 }
 
-form.search-filter {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 1rem;
-  }
-  form.search-filter input[type="text"],
-  form.search-filter select {
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    flex: 1 1 300px; /* responsive */
-    font-size: 14px;
-  }
-  form.search-filter button {
-    background-color: #16a34a; /* hijau */
-    color: white;
-    border: none;
-    padding: 8px 18px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-  }
-  form.search-filter button:hover {
-    background-color: #15803d;
-    
-  }
+
 
   .mb-7 {
     margin-bottom: 7rem !important;
@@ -93,23 +66,7 @@ form.search-filter {
     <div class="search-wrapper">
         <form action="{{ route('info.berita') }}" method="GET" class="search-form">
             
-            <!-- Filter Tahun -->
-            <select name="tahun" class="filter-select">
-                <option value="">Tahun</option>
-                @foreach($archiveYears as $year)
-                    <option value="{{ $year }}" {{ request('tahun') == $year ? 'selected' : '' }}>{{ $year }}</option>
-                @endforeach
-            </select>
-    
-            <!-- Filter Kategori -->
-            <select name="kategori" class="filter-select">
-                <option value="">Kategori</option>
-                @foreach($categories as $category)
-                    <option value="{{ $category->id }}" {{ request('kategori') == $category->id ? 'selected' : '' }}>
-                        {{ $category->nama }}
-                    </option>
-                @endforeach
-            </select>
+
     
             <!-- Search Input + Button -->
             <div class="search-input-wrapper">
@@ -137,16 +94,7 @@ form.search-filter {
         width: 100%;
         max-width: 700px;
     }
-    
-    /* Filters kecil di kiri */
-    .filter-select {
-        flex: 0 0 120px;
-        padding: 8px 12px;
-        border-radius: 30px;
-        border: 1px solid #ccc;
-        background: #fff;
-        cursor: pointer;
-    }
+
     
     /* Search input bulat */
     .search-input-wrapper {
@@ -158,6 +106,13 @@ form.search-filter {
         padding: 5px 10px;
         background: #fff;
     }
+
+    .search-input-wrapper .search-input:focus {
+    outline: none !important;        /* hilangkan garis biru */
+    box-shadow: none !important;     /* pastikan gak ada efek shadow */
+    border: none !important;         /* opsional kalau mau bener-bener bersih */
+}
+
     
     .search-input-wrapper .search-icon {
         margin-right: 8px;
@@ -194,32 +149,49 @@ form.search-filter {
             flex: 1 1 100%;
         }
     }
-    .thumbnail {
-    width: 100%;
-    height: 250px; /* semua thumbnail seragam tingginya */
-    overflow: hidden;
-    border-radius: 8px; /* opsional biar ada sudut melengkung */
-    background: #f9f9f9; /* warna background kalau gambar nggak nutup */
-}
-
-.thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* gambar penuh, bisa kepotong dikit */
-    display: block;
-}
-
 
 
     </style>
+
+<style>
+
+    .single-blog {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .blog-inner {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .blog-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* ⬅️ isi ditarik ke atas */
+    }
+    
+                
+                .single-blog .thumbnail img {
+        width: 100%;
+        height: 250px; /* atur tinggi seragam */
+        object-fit: cover; /* biar gak kepotong */
+        background-color: #f9f9f9; /* kasih background netral */
+        border-radius: 8px; /* opsional biar modern */
+        padding: 5px; /* biar ada jarak */
+    }
+        </style>
     
     
 
     
 
     <div class="altest-blog-area tmp-section-gap">
-        <div class="container">
-            <div class="row g-5">
+       
+            <div class="row g-5 px-3 px-md-5">
                 @foreach ($beritas as $berita)
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                     <div class="single-blog">
@@ -241,7 +213,7 @@ form.search-filter {
                             </div>
                             
                             <div class="blog-content">
-                                <div class="blog-head">
+                                <div class="blog-head" style="margin-top:-15px; margin-bottom:8px;">
                                     <span class="name">{{ $berita->penulis }}</span>
                                     <span class="designation">{{ $berita->kategori->nama ?? '-' }}</span>
                                 </div>
@@ -257,7 +229,7 @@ form.search-filter {
                                     $konten = strip_tags($konten, '<p><strong><em><ul><ol><li>');
                                 
                                     // Potong 30 kata
-                                    $konten = \Illuminate\Support\Str::words($konten, 30, '...');
+                                    $konten = \Illuminate\Support\Str::words($konten, 20, '...');
                                 @endphp
                                 
                                 <p class="description">
@@ -296,12 +268,68 @@ form.search-filter {
                     }
                 </style>
             </div>
-        </div>
+        
     </div>
     
 
 
+    
+         <!-- CTA Section -->
+<section class="cta-section">
+    <div class="cta-container">
+        <h2>Saatnya Meningkatkan Keputusan Strategis Bersama GIS Indonesia</h2>
+        {{-- <p>Data spasial akurat membantu Anda mengambil keputusan yang tepat, cepat, dan strategis.</p> --}}
+        <a href="/kontak" class="cta-btn">Hubungi Kami</a>
+    </div>
+</section>
+<style>
+    /* CTA Section */
+/* CTA Section */
+/* CTA Section */
+.cta-section {
+    background: #7ce14a url('/images/bgt1.jpg') no-repeat center center;
+    /* hijau sedikit lebih gelap + putih hijau lembut */
+    background-size: cover;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    /* border-radius: 12px; */
+    /* margin-bottom: 60px; */
+}
 
+
+.cta-section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    color: #fff; /* teks putih */
+}
+
+.cta-section p {
+    font-size: 23px;
+    margin-bottom: 30px;
+    color: #fff; /* teks putih */
+}
+
+.cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: rgb(35, 228, 32); /* hijau utama */
+    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: #d8fadc; /* putih kehijauan */
+    color: #145a26;
+}
+
+
+</style>
     <footer class="footer-area footer-style-one-wrapper" 
     style="background-image: url('{{ asset('assets/images/footer/bg-03.png') }}'); background-repeat: no-repeat; background-size: cover;">
   
@@ -400,10 +428,10 @@ form.search-filter {
                 
                 <div class="col-lg-3 col-md-6">
                     <div class="single-footer-wrapper">
-                        <h5 class="ft-title">Info Resmi:</h5>
+                        <h5 class="ft-title"> </h5>
                         <ul class="ft-link">
-                            <li class="ft-location"> Jl. Mercurius No.4 Blk. C, RW.5, Ciherang, Kec. Dramaga, Kabupaten Bogor, Jawa Barat 16680</li>
-
+                            <li class="ft-location"></li>
+    
                             <li>
                                 <div class="single-contact">
 

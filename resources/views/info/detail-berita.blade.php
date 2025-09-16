@@ -405,11 +405,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 <div class="col-lg-3 col-md-6">
                     <div class="single-footer-wrapper">
-                        <h5 class="ft-title">Info Resmi:</h5>
-                        <ul class="ft-link">
-                            <li class="ft-location"> Jl. Mercurius No.4 Blk. C, RW.5, Ciherang, Kec. Dramaga, Kabupaten Bogor, Jawa Barat 16680</li>
+                        <h5 class="ft-title"> </h5>
+                    <ul class="ft-link">
+                        <li class="ft-location"></li>
 
-                            <li>
+                        <li>
                                 <div class="single-contact">
 
                                     <div class="icon">

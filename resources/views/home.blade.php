@@ -58,7 +58,7 @@
 
 
 .tmp-section-gapBottom {
-    padding-bottom: 100px !important; /* lebih rapat dari 120px */
+    padding-bottom: 40px !important; /* lebih rapat dari 120px */
 }
 
 .pt-16 {
@@ -170,15 +170,7 @@
 
                         <div class="image-three animated">
                             <img class="" src="{{ asset('assets/images/about/02-01.png') }}" alt="corporate business">
-                        </div>
-
-                       
-
-                        {{-- <div class="flower">
-                            <img src="{{ asset('assets/images/about/flower-1.png') }}" alt="">
-                        </div> --}}
-
-                    
+                        </div>   
                     </div>
                 </div>
             </div>
@@ -196,8 +188,8 @@
                     
 
                   <p class="about-description">
-    GIS Indonesia adalah platform website yang berfokus pada suatu hal yang berkaitan dengan data-data Geospasial di berbagai sektor. Data tersebut dapat membantu pemerintah atau industri dalam mengambil sebuah keputusan yang tepat dan strategis dari lokasi spasial yang dikaji. Kami menyediakan beberapa data spasial untuk beberapa daerah di Indonesia dan di perjual belikan pada platform E-Commerce kami.
-</p>
+                    GIS Indonesia adalah platform website yang berfokus pada suatu hal yang berkaitan dengan data-data Geospasial di berbagai sektor. Data tersebut dapat membantu pemerintah atau industri dalam mengambil sebuah keputusan yang tepat dan strategis dari lokasi spasial yang dikaji. Kami menyediakan beberapa data spasial untuk beberapa daerah di Indonesia dan di perjual belikan pada platform E-Commerce kami.
+                    </p>
 
   <!-- Three.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
@@ -242,12 +234,13 @@
   scene.add(globe);
 
   // Lighting
-  const light = new THREE.DirectionalLight(0xffffff, 1);
-  light.position.set(5, 5, 5);
-  scene.add(light);
+const light = new THREE.DirectionalLight(0xffffff, 1.5); // naikkan dari 1 ke 1.5
+light.position.set(5, 5, 5);
+scene.add(light);
 
-  const ambient = new THREE.AmbientLight(0x404040, 0.5); // cahaya lembut
-  scene.add(ambient);
+const ambient = new THREE.AmbientLight(0x404040, 1); // naikkan dari 0.5 ke 1
+scene.add(ambient);
+
 
   // Kamera
   camera.position.z = 3;
@@ -279,41 +272,40 @@
     <div class="container">
         <div class="stats-grid">
             <div class="stat-item">
-                <div class="icon"><i class="fas fa-project-diagram"></i></div>
+                <div class="stat-icon"><i class="fas fa-map-marked-alt"></i></div>
                 <div class="stat-text">
-                    <h3>5,500+</h3>
-                    <p>Projects Handled</p>
+                    <h3>100+</h3>
+                    <p>Proyek Pemetaan</p>
                 </div>
+
             </div>
             <div class="stat-item">
-                <div class="icon"><i class="fas fa-stream"></i></div>
+                <div class="stat-icon"><i class="fas fa-database"></i></div>
                 <div class="stat-text">
-                    <h3>1.3B+</h3>
-                    <p>Streams Crawled</p>
+                    <h3>1.3M+</h3>
+                    <p>Data Spasial Terkumpul</p>
                 </div>
+
             </div>
             <div class="stat-item">
-                <div class="icon"><i class="fas fa-ticket-alt"></i></div>
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
                 <div class="stat-text">
-                    <h3>146M+</h3>
-                    <p>Ticket Conversations</p>
+                    <h3>146K+</h3>
+                    <p>Pengguna & Mitra</p>
                 </div>
-            </div>
+
         </div>
     </div>
 </section>
-
-<!-- Jangan lupa link Font Awesome di head -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
-
 
 <!-- Trusted Section -->
 <section class="trusted-section">
     <div class="container">
         <div class="trusted-content">
-            <h2>Trusted by</h2>
-            <p>Over 500 B2B Brands & Clients</p>
+            <h2>Dipercaya oleh</h2>
+            <p>Lebih dari 500 Mitra & Klien di Seluruh Indonesia</p>
         </div>
+        
     </div>
 </section>
 
@@ -326,7 +318,7 @@
     background-size: cover;
     padding: 60px 20px;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
    
 }
 
@@ -339,17 +331,17 @@
 }
 
 .trusted-content h2 {
-    font-size: 48px;
+    font-size: 42px;
     color: #ffffff;
     font-weight: bold;
     margin: 0;
 }
 
 .trusted-content p {
-    font-size: 38px;
+    font-size: 32px;
     color: #ffffff;
     margin: 0;
-    margin-top: 18px;
+    margin-top: 8px;
 }
 
 /* Responsive */
@@ -388,7 +380,7 @@
     padding: 20px; /* biar ada ruang dalam */
 }
 
-.icon {
+.stat-icon {
     width: 80px;
     height: 80px;
     background-color: #2a7a42; /* hijau gelap */
@@ -435,7 +427,8 @@
 
 </style>
 
-<!-- Ruang Lingkup -->
+
+  <!-- Ruang Lingkup -->
 <div class="service-area tmp-section-gapBottom" id="service">
     <div class="container">
         <div class="row">
@@ -450,32 +443,300 @@
             </div>
         </div>
 
-        <div class="row g-5">
-            @foreach ($lingkups as $lingkup)
-            <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                <div class="service-inner financial-service-inner agency-service">
-                    <div class="icon">
-                        <img src="{{ asset('storage/' . $lingkup->icon) }}" alt="corporate_Business_Services_agency">
+        <div class="service-slider relative py-12 px-6 md:px-12 lg:px-24">
+            <div class="max-w-full mx-auto">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        @php
+                            $slideCount = count($lingkups);
+                            if ($slideCount < 6) {
+                                $repeat = ceil(6 / $slideCount);
+                            } elseif ($slideCount == 4) {
+                                $repeat = 2;
+                            } else {
+                                $repeat = 1;
+                            }
+                        @endphp
+                
+                        @for ($i = 0; $i < $repeat; $i++)
+                            @foreach ($lingkups as $lingkup)
+                            <div class="swiper-slide flex justify-center">
+                                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300 flex flex-col"
+                                        style="max-width: 360px; min-height: 430px; margin: 0 auto;">
+
+                                        <!-- Bagian Gambar (50% fix) -->
+                                        <div class="h-1/2 w-full bg-gray-100 flex items-center justify-center overflow-hidden">
+                                            <img src="{{ asset('storage/' . $lingkup->icon) }}" 
+                                                 alt="{{ $lingkup->title }}" 
+                                                 class="max-h-full max-w-full">
+                                        </div>
+                                        
+
+                                        <!-- Bagian Konten (50%) -->
+                                        <div class="h-1/2 flex flex-col justify-center p-6 text-center">
+                                            <h2 class="text-[20px] font-extrabold text-gray-900 mb-4">
+                                                {{ $lingkup->title }}
+                                            </h2>
+                                            <p class="text-gray-600 text-[15px] leading-relaxed">
+                                                {{ $lingkup->description }}
+                                            </p>
+                                            
+                                        </div>
+                                        
+                                        
+                                    </div>
+
+                            </div>
+                            
+                            
+                            @endforeach
+                        @endfor
                     </div>
-                    <div class="content">
-                        <h2 class="title">{{ $lingkup->title }}</h2>
-                        <p class="description">{{ $lingkup->description }}</p>
-                        <div class="three--dot">
-                            <div class="dot dot-one"></div>
-                            <div class="dot dot-two"></div>
-                            <div class="dot dot-two"></div>
-                        </div>
-                    </div>
-                    <a href="/" class="over_link"></a>
+                </div>
+                                
+                
+                
+        
+<!-- ✅ Custom class biar nggak tabrakan -->
+<div class="swiper-pagination lingkup-pagination mt-6"></div>
+
                 </div>
             </div>
-            @endforeach
         </div>
+        
+        </div>
+                
     </div>
 </div>
 
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
-<!-- End Raung Lingkup -->
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      loop: {{ count($lingkups) > 3 ? 'true' : 'false' }},
+      loopedSlides: {{ count($lingkups) > 3 ? count($lingkups) : 0 }},
+      spaceBetween: 0, 
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 130,   
+        depth: 0,       
+        modifier: 1,
+        slideShadows: false,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      pagination: {
+        el: ".lingkup-pagination",
+        clickable: true,
+        renderBullet: function (index, className) {
+          let totalBullet = 4; // hanya 4 bullet yang mau ditampilkan
+          if (index >= totalBullet) return "";
+          return '<span class="' + className + '"></span>';
+        },
+      },
+  
+      // RESPONSIVE
+      breakpoints: {
+        0: {
+          slidesPerView: 1
+        },
+        640: {
+          slidesPerView: 2
+        },
+        1024: {
+          slidesPerView: 2
+        },
+        1440: {
+          slidesPerView: 3
+        }
+      }
+    });
+  </script>
+  
+    
+  
+  
+  
+  
+
+<style>
+
+.lingkup-pagination {
+  position: relative !important;
+  margin-top: 60px;
+  text-align: center;
+  z-index: 10;
+}
+
+.lingkup-pagination .swiper-pagination-bullet {
+  background: #22c55e;   /* hijau */
+  opacity: 0.5;
+  width: 10px;
+  height: 10px;
+}
+
+.lingkup-pagination .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #16a34a;   /* hijau lebih tua */
+}
+
+
+/* Pastikan slide auto height */
+/* Biar shadow / scale tidak kepotong */
+.service-slider .swiper {
+  overflow: visible !important;
+}
+
+.max-w-8xl {
+  max-width: 1300px; /* lebih lebar dari 7xl */
+}
+
+
+/* Pastikan wrapper juga tidak ngebatesin tinggi */
+.service-slider .swiper-wrapper {
+  align-items: stretch;
+}
+
+/* Tombol navigasi custom */
+/* Tombol navigasi custom */
+.custom-nav {
+  width: 35px;
+  height: 35px;
+  background: #22c55e; /* hijau */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Tombol di luar slider tapi dekat */
+.swiper-button-prev {
+  left: 60px; /* pas di luar kiri container */
+}
+
+.swiper-button-next {
+  right: 60px; /* pas di luar kanan container */
+}
+
+
+/* Card penuh dan fleksibel */
+/* Card styling */.mySwiper {
+  padding: 0 15px;       
+  max-width: 1200px;    
+  margin: 0 auto;        
+  overflow: hidden !important; 
+}
+
+.service-inner {
+  max-width: 360px;
+  min-height: 430px;
+  margin: 0 auto;
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* 
+Efek Blur */
+/* Default slide normal */
+.swiper-slide {
+  transform: scale(1);  /* tetap normal */
+/* agak redup biar beda */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Tengah menonjol */
+.swiper-slide-active {
+  transform: scale(1.1); /* lebih besar */
+  opacity: 1;
+  z-index: 2;
+}
+
+
+
+
+/* Tombol responsif */
+.custom-nav {
+  width: 35px;
+  height: 35px;
+}
+.swiper-button-prev { left: 20px; }
+.swiper-button-next { right: 20px; }
+
+@media (min-width: 1024px) {
+  .swiper-button-prev { left: 60px; }
+  .swiper-button-next { right: 60px; }
+}
+
+
+    </style>
+
+
+            <!-- CTA Section -->
+<section class="cta-section">
+    <div class="cta-container">
+        <h2>Saatnya Meningkatkan Keputusan Strategis Bersama GIS Indonesia</h2>
+        {{-- <p>Data spasial akurat membantu Anda mengambil keputusan yang tepat, cepat, dan strategis.</p> --}}
+        <a href="/kontak" class="cta-btn">Hubungi Kami</a>
+    </div>
+</section>
+<style>
+    /* CTA Section */
+/* CTA Section */
+/* CTA Section */
+.cta-section {
+    background: #7ce14a url('/images/bgt1.jpg') no-repeat center center;
+    /* hijau sedikit lebih gelap + putih hijau lembut */
+    background-size: cover;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    /* border-radius: 12px; */
+    margin-bottom: 60px;
+}
+
+
+.cta-section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    color: #fff; /* teks putih */
+}
+
+.cta-section p {
+    font-size: 23px;
+    margin-bottom: 30px;
+    color: #fff; /* teks putih */
+}
+
+.cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: rgb(35, 228, 32); /* hijau utama */
+    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    background: #d8fadc; /* putih kehijauan */
+    color: #145a26;
+}
+
+
+</style>
 
 <!-- Logo Kerja Sama -->
 <div class="brand-area brand-area-custom">
@@ -606,7 +867,17 @@ padding-bottom: 5rem !important; /* hanya untuk brand area */
             </div>
         </div>
 
+        
         <div class="row g-5">
+            @if ($beritas->isEmpty())
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 mx-auto">
+                <div class="no-berita-card">
+                    <p>Belum ada berita tersedia.</p>
+                </div>
+            </div>
+        @endif
+        
+        
             @foreach ($beritas->take(3) as $berita)
             <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                 <div class="single-blog">
@@ -627,10 +898,11 @@ padding-bottom: 5rem !important; /* hanya untuk brand area */
                             </div>
                         </div>
                         <div class="blog-content">
-                            <div class="blog-head">
+                            <div class="blog-head" style="margin-top:-15px; margin-bottom:8px;">
                                 <span class="name">{{ $berita->penulis }}</span>
                                 <span class="designation">{{ $berita->kategori->nama ?? '-' }}</span>
                             </div>
+                            
                             <div class="blog-body">
                                 <a href="{{ route('info.berita.detail', $berita->slug) }}" class="title-area">
                                     <h4 class="title">{{ $berita->judul }}</h4>
@@ -642,7 +914,7 @@ padding-bottom: 5rem !important; /* hanya untuk brand area */
                                 $konten = strip_tags($konten, '<p><strong><em><ul><ol><li>');
                             
                                 // Potong 30 kata
-                                $konten = \Illuminate\Support\Str::words($konten, 30, '...');
+                                $konten = \Illuminate\Support\Str::words($konten, 20, '...');
                             @endphp
                             
                             <p class="description">
@@ -659,15 +931,99 @@ padding-bottom: 5rem !important; /* hanya untuk brand area */
                 </div>
             </div>
             @endforeach
+  
         </div>
 
-        <!-- Tombol Lihat Semua -->
-        <div class="text-center" style="margin-top:50px;">
-            <a href="/info/berita" 
-               class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold text-3xl md:text-4xl py-4 px-16 rounded-lg shadow-lg transition-colors duration-300">
-                Lihat Semua
-            </a>     
-        </div>
+                <!-- Tombol Lihat Semua -->
+                @if ($beritas->isNotEmpty())
+    <div class="text-center" style="margin-top:50px;">
+        <a href="/info/berita" 
+           class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold text-2xl md:text-3xl py-3 px-12 rounded-lg shadow-lg transition-colors duration-300">
+            Lihat Semua
+        </a>     
+    </div>
+@endif
+
+   
+
+                
+        <style>
+
+.single-blog {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.blog-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.blog-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* ⬅️ isi ditarik ke atas */
+}
+
+
+.no-berita-card {
+    text-align: center;
+    padding: 40px 30px;
+    border: 2px dashed #d1d5db; /* abu-abu lembut */
+    border-radius: 12px;
+    background: #f9fafb; /* abu-abu muda */
+    transition: all 0.3s ease-in-out;
+    min-height: 520px;      /* tinggi biar setara card berita */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;            /* penuh sesuai col grid */
+}
+
+
+
+.no-berita-card i {
+    font-size: 40px;
+    color: #9ca3af; /* abu-abu */
+    margin-bottom: 12px;
+}
+
+.no-berita-card h5 {
+    color: #374151; /* abu tua */
+    margin-bottom: 6px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.no-berita-card p {
+    color: #6b7280; /* abu sedang */
+    font-size: 14px;
+    margin: 0;
+}
+
+.no-berita-card:hover {
+    background: #ffffff;
+    border-color: #9ca3af;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+            
+            .single-blog .thumbnail img {
+    width: 100%;
+    height: 250px; /* atur tinggi seragam */
+    object-fit: cover; /* biar gak kepotong */
+    background-color: #f9f9f9; /* kasih background netral */
+    border-radius: 8px; /* opsional biar modern */
+    padding: 5px; /* biar ada jarak */
+}
+    </style>
+
+        
         
     </div>
 </div>
@@ -867,11 +1223,11 @@ style="background-image: url('{{ asset('assets/images/testimonial/bg-01.png') }}
                      
                      <div class="col-lg-3 col-md-6">
                          <div class="single-footer-wrapper">
-                             <h5 class="ft-title">Info Resmi:</h5>
-                             <ul class="ft-link">
-                                 <li class="ft-location"> Jl. Mercurius No.4 Blk. C, RW.5, Ciherang, Kec. Dramaga, Kabupaten Bogor, Jawa Barat 16680</li>
- 
-                                 <li>
+                            <h5 class="ft-title"></h5>
+                            <ul class="ft-link">
+                                <li class="ft-location"> </li>
+
+                                <li>
                                      <div class="single-contact">
  
                                          <div class="icon">
