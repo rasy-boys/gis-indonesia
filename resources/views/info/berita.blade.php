@@ -183,6 +183,48 @@
         border-radius: 8px; /* opsional biar modern */
         padding: 5px; /* biar ada jarak */
     }
+
+    .no-berita-card {
+    text-align: center;
+    padding: 40px 30px;
+    border: 2px dashed #d1d5db; /* abu-abu lembut */
+    border-radius: 12px;
+    background: #f9fafb; /* abu-abu muda */
+    transition: all 0.3s ease-in-out;
+    min-height: 520px;      /* tinggi biar setara card berita */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;            /* penuh sesuai col grid */
+}
+
+
+
+.no-berita-card i {
+    font-size: 40px;
+    color: #9ca3af; /* abu-abu */
+    margin-bottom: 12px;
+}
+
+.no-berita-card h5 {
+    color: #374151; /* abu tua */
+    margin-bottom: 6px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.no-berita-card p {
+    color: #6b7280; /* abu sedang */
+    font-size: 14px;
+    margin: 0;
+}
+
+.no-berita-card:hover {
+    background: #ffffff;
+    border-color: #9ca3af;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
         </style>
     
     
@@ -192,6 +234,13 @@
     <div class="altest-blog-area tmp-section-gap">
        
             <div class="row g-5 px-3 px-md-5">
+                @if ($beritas->isEmpty())
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 mx-auto">
+                <div class="no-berita-card">
+                    <p>Belum ada berita tersedia.</p>
+                </div>
+            </div>
+        @endif
                 @foreach ($beritas as $berita)
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                     <div class="single-blog">
@@ -402,29 +451,61 @@
                     <div class="single-footer-wrapper pr--15">
                         <h5 class="ft-title">Postingan Terbaru</h5>
                 
-                        @foreach ($recentPostss as $recent)
-                        <div class="single-post flex items-start gap-3 mb-4">
-                            <div class="thumbnail w-16 h-16 overflow-hidden rounded">
-                                <a href="{{ route('info.berita.detail', $recent->slug) }}">
-                                    <img src="{{ asset('storage/' . $recent->gambar) }}" alt="{{ $recent->judul }}" class="object-cover w-full h-full">
-                                </a>
+                        @if ($recentPosts->isEmpty())
+                        <div class="no-recent-post">
+                            <div class="icon">
+                                <i class="fa-regular fa-newspaper"></i>
                             </div>
-                            <div class="content text-sm">
-                                <div class="date text-gray-500 text-xs mb-1">
-                                    <i class="fa-light fa-calendar-days"></i>
-                                    <span>{{ \Carbon\Carbon::parse($recent->tanggal)->translatedFormat('d M Y') }}</span>
-                                </div>
-                                <a href="{{ route('info.berita.detail', $recent->slug) }}" class="hover:underline">
-                                    <h6 class="title font-medium leading-snug">
-                                        {{ Str::limit($recent->judul, 50) }}
-                                    </h6>
-                                </a>
-                            </div>
+                            <p>Belum ada postingan terbaru.</p>
                         </div>
+                    @else
+                        @foreach ($recentPosts as $recent)
+                            <div class="single-post flex items-start gap-3 mb-4">
+                                <div class="thumbnail w-16 h-16 overflow-hidden rounded">
+                                    <a href="{{ route('info.berita.detail', $recent->slug) }}">
+                                        <img src="{{ asset('storage/' . $recent->gambar) }}" alt="{{ $recent->judul }}" class="object-cover w-full h-full">
+                                    </a>
+                                </div>
+                                <div class="content text-sm">
+                                    <div class="date text-gray-500 text-xs mb-1">
+                                        <i class="fa-light fa-calendar-days"></i>
+                                        <span>{{ \Carbon\Carbon::parse($recent->tanggal)->translatedFormat('d M Y') }}</span>
+                                    </div>
+                                    <a href="{{ route('info.berita.detail', $recent->slug) }}" class="hover:underline">
+                                        <h6 class="title font-medium leading-snug">
+                                            {{ Str::limit($recent->judul, 50) }}
+                                        </h6>
+                                    </a>
+                                </div>
+                            </div>
                         @endforeach
-                
-                    </div>
+                    @endif
                 </div>
+            </div>
+
+            <style>
+                .no-recent-post {
+                text-align: center;
+                border: 2px dashed #d1d5db;
+                border-radius: 8px;
+                padding: 20px;
+                background: #f9fbf9;
+                margin-top: 10px;
+            }
+
+            .no-recent-post .icon {
+                font-size: 32px;
+                color: #6b7280; /* abu-abu */
+                margin-bottom: 8px;
+            }
+
+            .no-recent-post p {
+                font-size: 14px;
+                color: #374151; /* abu gelap */
+                margin: 0;
+            }
+
+            </style>
                 
                 <div class="col-lg-3 col-md-6">
                     <div class="single-footer-wrapper">

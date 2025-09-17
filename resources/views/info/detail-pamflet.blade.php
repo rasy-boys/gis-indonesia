@@ -205,30 +205,61 @@ style="background-image: url('{{ asset('assets/images/footer/bg-03.png') }}'); b
                 <div class="single-footer-wrapper pr--15">
                     <h5 class="ft-title">Postingan Terbaru</h5>
             
-                    @foreach ($recentPosts as $recent)
-                    <div class="single-post flex items-start gap-3 mb-4">
-                        <div class="thumbnail w-16 h-16 overflow-hidden rounded">
-                            <a href="{{ route('info.berita.detail', $recent->slug) }}">
-                                <img src="{{ asset('storage/' . $recent->gambar) }}" alt="{{ $recent->judul }}" class="object-cover w-full h-full">
-                            </a>
+                    @if ($recentPosts->isEmpty())
+                    <div class="no-recent-post">
+                        <div class="icon">
+                            <i class="fa-regular fa-newspaper"></i>
                         </div>
-                        <div class="content text-sm">
-                            <div class="date text-gray-500 text-xs mb-1">
-                                <i class="fa-light fa-calendar-days"></i>
-                                <span>{{ \Carbon\Carbon::parse($recent->tanggal)->translatedFormat('d M Y') }}</span>
-                            </div>
-                            <a href="{{ route('info.berita.detail', $recent->slug) }}" class="hover:underline">
-                                <h6 class="title font-medium leading-snug">
-                                    {{ Str::limit($recent->judul, 50) }}
-                                </h6>
-                            </a>
-                        </div>
+                        <p>Belum ada postingan terbaru.</p>
                     </div>
+                @else
+                    @foreach ($recentPosts as $recent)
+                        <div class="single-post flex items-start gap-3 mb-4">
+                            <div class="thumbnail w-16 h-16 overflow-hidden rounded">
+                                <a href="{{ route('info.berita.detail', $recent->slug) }}">
+                                    <img src="{{ asset('storage/' . $recent->gambar) }}" alt="{{ $recent->judul }}" class="object-cover w-full h-full">
+                                </a>
+                            </div>
+                            <div class="content text-sm">
+                                <div class="date text-gray-500 text-xs mb-1">
+                                    <i class="fa-light fa-calendar-days"></i>
+                                    <span>{{ \Carbon\Carbon::parse($recent->tanggal)->translatedFormat('d M Y') }}</span>
+                                </div>
+                                <a href="{{ route('info.berita.detail', $recent->slug) }}" class="hover:underline">
+                                    <h6 class="title font-medium leading-snug">
+                                        {{ Str::limit($recent->judul, 50) }}
+                                    </h6>
+                                </a>
+                            </div>
+                        </div>
                     @endforeach
-            
-                </div>
+                @endif
             </div>
-            
+        </div>
+
+        <style>
+            .no-recent-post {
+            text-align: center;
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+            padding: 20px;
+            background: #f9fbf9;
+            margin-top: 10px;
+        }
+
+        .no-recent-post .icon {
+            font-size: 32px;
+            color: #6b7280; /* abu-abu */
+            margin-bottom: 8px;
+        }
+
+        .no-recent-post p {
+            font-size: 14px;
+            color: #374151; /* abu gelap */
+            margin: 0;
+        }
+
+        </style>
             <div class="col-lg-3 col-md-6">
                 <div class="single-footer-wrapper">
                     <h5 class="ft-title"> </h5>

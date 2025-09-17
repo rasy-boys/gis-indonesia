@@ -135,8 +135,11 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="banner-startup-main-content-wrapper text-center">
-                                        <h1 class="title text-white" style="font-size: 83px">{{ $item->title }}</h1>
-                                        <p class="disc text-white">{{ $item->description }}</p>
+                                        <h1 class="title text-white" 
+                                            style="font-size: clamp(28px, 6vw, 83px);">
+                                            {{ $item->title }}
+                                        </h1>
+                                            <p class="disc text-white">{{ $item->description }}</p>
                                         <a href="/kontak" class="tmp-btn btn-primary">Kontak Kami</a>
                                     </div>
                                 </div>
@@ -194,18 +197,60 @@
   <!-- Three.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
 
-<div class="thumbnail-with-title">
+<div class="thumbnail-with-title" 
+     style="display:flex; align-items:center; gap:12px; justify-content:center;">
+
   <div id="globe-container" class="thumbnail globe-3d"></div>
-  <div class="title">Memudahkan anda dalam kebutuhan data spasial anda.</div>
+
+  <div class="title" style="font-size:18px; font-weight:500;">
+    Memudahkan anda dalam kebutuhan data spasial anda.
+  </div>
 </div>
 
 <style>
   .globe-3d {
-    width: 100px;
-    height: 100px;
-    margin: auto;
-    transform: translateX(-20px);
+  width: 100px;
+  height: 100px;
+  /* hapus yang bikin ke tengah */
+  margin: 0;               
+  transform: none;         
+}
+
+
+   /* Tablet */
+   @media (max-width: 768px) {
+    .globe-3d {
+      width: 80px;
+      height: 80px;
+    }
+    .thumbnail-with-title .title {
+      font-size: 16px;
+    }
   }
+/* HP */
+@media (max-width: 480px) {
+  .thumbnail-with-title {
+    display: flex;
+    align-items: center;    /* sejajarkan globe & teks */
+    justify-content: flex-start; 
+    gap: 8px;
+  }
+
+  .globe-3d {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;         /* globe nggak mengecil */
+  }
+
+  .thumbnail-with-title .title {
+    font-size: 14px;
+    line-height: 1.4;
+    max-width: 70%;         /* batasi lebar teks biar nggak nabrak */
+    text-align: left;
+    margin-top: 30px;
+  }
+}
+
 </style>
 
 <script>
@@ -359,70 +404,118 @@ scene.add(ambient);
 }
 
 
- /* Stats Section */
 .stats-section {
-    background-color: #e6f4ea; /* hijau muda */
-    padding: 80px 20px; /* lebih tinggi */
+    background-color: #e6f4ea;
+    padding: 80px 20px;
     text-align: center;
+    overflow-x: auto; /* kalau benar2 sempit, bisa scroll horizontal */
 }
 
 .stats-grid {
     display: flex;
     justify-content: center;
-    gap: 100px; /* lebih lebar jarak antar item */
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 80px; /* jarak antar item */
+    flex-wrap: nowrap; /* biar selalu sejajar */
 }
 
 .stat-item {
     display: flex;
     align-items: center;
-    gap: 30px; /* jarak ikon dan teks lebih lega */
-    padding: 20px; /* biar ada ruang dalam */
+    gap: 20px;
+    flex-shrink: 1; /* biar mengecil kalau layar kecil */
+    min-width: 0;   /* biar teks bisa shrink */
 }
 
 .stat-icon {
-    width: 80px;
-    height: 80px;
-    background-color: #2a7a42; /* hijau gelap */
+    flex-shrink: 0;
+    width: 70px;
+    height: 70px;
+    background-color: #2a7a42;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 36px; /* ikon lebih besar */
+    font-size: 32px;
 }
 
 .stat-text h3 {
-    font-size: 48px; /* angka lebih besar */
+    font-size: 40px;
     color: #2a7a42;
     margin: 0;
     font-weight: bold;
 }
 
 .stat-text p {
-    font-size: 20px; /* teks lebih besar */
+    font-size: 18px;
     color: #3a3a3a;
     margin: 0;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Tablet */
+@media (max-width: 1024px) {
     .stats-grid {
-        flex-direction: column;
-        gap: 40px; /* jarak antar item di mobile */
+        gap: 40px;
+    }
+    .stat-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
     }
     .stat-text h3 {
-        font-size: 32px;
-    }
-    .stat-text p {
-        font-size: 18px;
-    }
-    .icon {
-        width: 60px;
-        height: 60px;
         font-size: 28px;
     }
+    .stat-text p {
+        font-size: 14px;
+    }
 }
+
+/* HP */
+/* HP */
+@media (max-width: 600px) {
+    .stats-section {
+        padding: 40px 10px;
+    }
+
+    .stats-grid {
+        flex-wrap: nowrap;       /* tetap 1 baris */
+        justify-content: space-between; 
+        gap: 8px;
+    }
+
+    .stat-item {
+        flex: 1 1 33%;           /* bagi rata 3 kolom */
+        max-width: 33%;
+        display: flex;
+        flex-direction: row;     /* ikon di kiri, teks di kanan */
+        align-items: center;     /* sejajarkan secara vertikal */
+        justify-content: center; /* isi rata tengah */
+        gap: 6px;                /* jarak antara ikon dan teks */
+        text-align: left;        /* teks rata kiri */
+    }
+
+    .stat-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+        flex-shrink: 0; /* biar ikon nggak mengecil */
+    }
+
+    .stat-text h3 {
+        font-size: 14px;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .stat-text p {
+        font-size: 11px;
+        margin: 0;
+        line-height: 1.2;
+    }
+}
+
+
 
 
 </style>
@@ -474,12 +567,13 @@ scene.add(ambient);
 
                                         <!-- Bagian Konten (50%) -->
                                         <div class="h-1/2 flex flex-col justify-center p-6 text-center">
-                                            <h2 class="text-[20px] font-extrabold text-gray-900 mb-4">
+                                            <h2 class="text-[20px] font-extrabold text-gray-900 mt-6">
                                                 {{ $lingkup->title }}
                                             </h2>
-                                            <p class="text-gray-600 text-[15px] leading-relaxed">
+                                            <p class="text-gray-900 text-[17px] leading-relaxed mt-4">
                                                 {{ $lingkup->description }}
                                             </p>
+                                            
                                             
                                         </div>
                                         
@@ -1194,32 +1288,64 @@ style="background-image: url('{{ asset('assets/images/testimonial/bg-01.png') }}
                      </div>
  
                      <div class="col-lg-3 col-md-6">
-                         <div class="single-footer-wrapper pr--15">
-                             <h5 class="ft-title">Postingan Terbaru</h5>
-                     
-                             @foreach ($recentPosts as $recent)
-                             <div class="single-post flex items-start gap-3 mb-4">
-                                 <div class="thumbnail w-16 h-16 overflow-hidden rounded">
-                                     <a href="{{ route('info.berita.detail', $recent->slug) }}">
-                                         <img src="{{ asset('storage/' . $recent->gambar) }}" alt="{{ $recent->judul }}" class="object-cover w-full h-full">
-                                     </a>
-                                 </div>
-                                 <div class="content text-sm">
-                                     <div class="date text-gray-500 text-xs mb-1">
-                                         <i class="fa-light fa-calendar-days"></i>
-                                         <span>{{ \Carbon\Carbon::parse($recent->tanggal)->translatedFormat('d M Y') }}</span>
-                                     </div>
-                                     <a href="{{ route('info.berita.detail', $recent->slug) }}" class="hover:underline">
-                                         <h6 class="title font-medium leading-snug">
-                                             {{ Str::limit($recent->judul, 50) }}
-                                         </h6>
-                                     </a>
-                                 </div>
-                             </div>
-                             @endforeach
-                     
-                         </div>
-                     </div>
+                        <div class="single-footer-wrapper pr--15">
+                            <h5 class="ft-title">Postingan Terbaru</h5>
+                    
+                            @if ($recentPosts->isEmpty())
+                                <div class="no-recent-post">
+                                    <div class="icon">
+                                        <i class="fa-regular fa-newspaper"></i>
+                                    </div>
+                                    <p>Belum ada postingan terbaru.</p>
+                                </div>
+                            @else
+                                @foreach ($recentPosts as $recent)
+                                    <div class="single-post flex items-start gap-3 mb-4">
+                                        <div class="thumbnail w-16 h-16 overflow-hidden rounded">
+                                            <a href="{{ route('info.berita.detail', $recent->slug) }}">
+                                                <img src="{{ asset('storage/' . $recent->gambar) }}" alt="{{ $recent->judul }}" class="object-cover w-full h-full">
+                                            </a>
+                                        </div>
+                                        <div class="content text-sm">
+                                            <div class="date text-gray-500 text-xs mb-1">
+                                                <i class="fa-light fa-calendar-days"></i>
+                                                <span>{{ \Carbon\Carbon::parse($recent->tanggal)->translatedFormat('d M Y') }}</span>
+                                            </div>
+                                            <a href="{{ route('info.berita.detail', $recent->slug) }}" class="hover:underline">
+                                                <h6 class="title font-medium leading-snug">
+                                                    {{ Str::limit($recent->judul, 50) }}
+                                                </h6>
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+
+                    <style>
+                        .no-recent-post {
+                        text-align: center;
+                        border: 2px dashed #d1d5db;
+                        border-radius: 8px;
+                        padding: 20px;
+                        background: #f9fbf9;
+                        margin-top: 10px;
+                    }
+
+                    .no-recent-post .icon {
+                        font-size: 32px;
+                        color: #6b7280; /* abu-abu */
+                        margin-bottom: 8px;
+                    }
+
+                    .no-recent-post p {
+                        font-size: 14px;
+                        color: #374151; /* abu gelap */
+                        margin: 0;
+                    }
+
+                    </style>
                      
                      <div class="col-lg-3 col-md-6">
                          <div class="single-footer-wrapper">

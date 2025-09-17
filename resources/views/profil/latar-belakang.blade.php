@@ -32,6 +32,26 @@
     text-align: center;
     padding-bottom: 40px !important;
 }
+
+.about-description {
+    margin-top: -30px; /* paksain naik */
+    font-size: 15px;
+    line-height: 1.6;
+    color: #444;
+    text-align: justify; /* biar rata kanan kiri */
+}
+
+
+
+.about-area.about-style-one .thumbnail-with-title .title {
+    font-size: 17px !important;
+    line-height: 30px;
+    font-weight: var(--s-extra-bold);
+    font-family: var(--font-secondary);
+    color: var(--color-heading);
+    margin-right: 15px !important; /* geser ke kiri */
+}
+
     </style>
     
 
@@ -53,8 +73,10 @@
      @if ($data && $data->image)
         style="background-image: url('{{ asset('storage/' . $data->image) }}'); background-size: cover; background-position: center;"
      @endif
->
-    <div class="container">
+     >
+     <div class="absolute inset-0 bg-black/50 z-0"></div>
+                    
+     <div class="container relative z-0">
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-inner text-center">
@@ -73,74 +95,159 @@
 
     <!-- End Breadcrumb area -->
 
-    <!-- Tpm About Area Start  -->
-    <div class="about-area tmp-section-gap about-style-one">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- Gambar -->
-                <div class="col-lg-6">
-                    <div class="about-thumbnails">
-                        <div class="thumbnail">
-                            <img src="{{ asset('assets/images/about/01-01.png') }}" alt="GIS Indonesia">
-    
-                            <div class="image-two">
-                                <img src="{{ asset('assets/images/about/03-01.png') }}" alt="Tim Profesional GIS">
-                            </div>
-    
-                            <div class="image-three animated">
-                                <img src="{{ asset('assets/images/about/02-01.png') }}" alt="Peta dan Data GIS">
-                            </div>
-    
-                            <div class="square"></div>
-    
-                            <div class="flower">
-                                <img src="{{ asset('assets/images/about/flower-1.png') }}" alt="Ornamen Dekoratif">
-                            </div>
-    
+    <!-- Tentang KAmi -->
+<div class="about-area tmp-section-gap about-style-one">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="about-thumbnails">
+                    <div class="thumbnail">
+                        <img src="{{ asset('assets/images/about/01-01.png') }}" alt="corporate business">
+
+                        <div class="image-two">
+                            <img src="{{ asset('assets/images/about/03-01.png') }}" alt="corporate business">
                         </div>
-    
-                        <!-- video icon -->
-                        {{-- <div class="vedio-icone" data-tmp-cursor="lg" data-tmp-cursor-text="Play Video">
-                            <a class="video-play-button play-video" href="#">
-                                <span></span>
-                            </a>
-                            <div class="video-overlay">
-                                <a class="video-overlay-close">×</a>
-                            </div>
-                        </div> --}}
+
+                        <div class="image-three animated">
+                            <img class="" src="{{ asset('assets/images/about/02-01.png') }}" alt="corporate business">
+                        </div>   
                     </div>
                 </div>
-    
-                <!-- Konten -->
-                <div class="col-lg-6">
-                    <div class="about-inner">
-                        <div class="section-head text-align-left section-head-one-side">
-                            <div class="section-sub-title">
-                                <img src="{{ asset('assets/images/services/icon2.png') }}" alt="Ikon GIS">
-                                <span class="subtitle">Tentang Kami</span>
-                            </div>
-                            <h2 class="title split-collab">
-                                Ketahui lebih lanjut tentang <br> GIS Indonesia </h2>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-inner">
+                    <div class="section-head text-align-left section-head-custom">
+                        <div class="section-sub-title">
+                            <img src="{{ asset('assets/images/services/icon2.png') }}" alt="Corporate_service">
+                            <span class="subtitle">Tentang Kami</span>
                         </div>
-    
-                        <p class="description text-justify">
-                            GIS Indonesia adalah platform website yang berfokus pada suatu hal yang berkaitan dengan data-data Geospasial di berbagai sektor. Data tersebut dapat membantu pemerintah atau industri dalam mengambil sebuah keputusan yang tepat dan strategis dari lokasi spasial yang dikaji. Kami menyediakan beberapa data spasial untuk beberapa daerah di Indonesia dan di perjual belikan pada platform E-Commerce kami.
-                        </p>
-    
-                        <div class="thumbnail-with-title mt-4">
-                            <div class="thumbnail">
-                                <img src="{{ asset('assets/images/about/about-icon.png') }}" alt="Efisiensi Bisnis">
-                                
-                            </div>
-                            <div class="title">Memudahkan anda dalam kebutuhan data spasial anda.</div>
-                        </div>
+                        <h2 class="title split-collab">
+                            Ketahui lebih lanjut tentang <br> GIS Indonesia
+                        </h2>
                     </div>
+                    
+
+                  <p class="about-description">
+                    GIS Indonesia adalah platform website yang berfokus pada suatu hal yang berkaitan dengan data-data Geospasial di berbagai sektor. Data tersebut dapat membantu pemerintah atau industri dalam mengambil sebuah keputusan yang tepat dan strategis dari lokasi spasial yang dikaji. Kami menyediakan beberapa data spasial untuk beberapa daerah di Indonesia dan di perjual belikan pada platform E-Commerce kami.
+                    </p>
+
+  <!-- Three.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+
+<div class="thumbnail-with-title" 
+     style="display:flex; align-items:center; gap:12px; justify-content:center;">
+
+  <div id="globe-container" class="thumbnail globe-3d"></div>
+
+  <div class="title" style="font-size:18px; font-weight:500;">
+    Memudahkan anda dalam kebutuhan data spasial anda.
+  </div>
+</div>
+
+<style>
+  .globe-3d {
+  width: 100px;
+  height: 100px;
+  /* hapus yang bikin ke tengah */
+  margin: 0;               
+  transform: none;         
+}
+
+
+   /* Tablet */
+   @media (max-width: 768px) {
+    .globe-3d {
+      width: 80px;
+      height: 80px;
+    }
+    .thumbnail-with-title .title {
+      font-size: 16px;
+    }
+  }
+/* HP */
+@media (max-width: 480px) {
+  .thumbnail-with-title {
+    display: flex;
+    align-items: center;    /* sejajarkan globe & teks */
+    justify-content: flex-start; 
+    gap: 8px;
+  }
+
+  .globe-3d {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;         /* globe nggak mengecil */
+  }
+
+  .thumbnail-with-title .title {
+    font-size: 14px;
+    line-height: 1.4;
+    max-width: 70%;         /* batasi lebar teks biar nggak nabrak */
+    text-align: left;
+    margin-top: 30px;
+  }
+}
+
+</style>
+
+<script>
+  // Setup scene
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(100, 100);
+  document.getElementById("globe-container").appendChild(renderer.domElement);
+
+  // Buat bola globe
+  const geometry = new THREE.SphereGeometry(1, 64, 64);
+  const textureLoader = new THREE.TextureLoader();
+
+  // GradientMap bawaan three.js untuk efek toon
+  const gradientMap = textureLoader.load("https://threejs.org/examples/textures/gradientMaps/fiveTone.jpg");
+  gradientMap.minFilter = THREE.NearestFilter; // biar efek toon tegas
+  gradientMap.magFilter = THREE.NearestFilter;
+
+  const material = new THREE.MeshToonMaterial({
+    map: textureLoader.load("/images/nasa.jpg"), // pakai file lokal kamu
+    gradientMap: gradientMap
+  });
+
+  const globe = new THREE.Mesh(geometry, material);
+  scene.add(globe);
+
+  // Lighting
+const light = new THREE.DirectionalLight(0xffffff, 1.5); // naikkan dari 1 ke 1.5
+light.position.set(5, 5, 5);
+scene.add(light);
+
+const ambient = new THREE.AmbientLight(0x404040, 1); // naikkan dari 0.5 ke 1
+scene.add(ambient);
+
+
+  // Kamera
+  camera.position.z = 3;
+
+  // Animasi
+  let t = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    globe.rotation.y += 0.01;         // rotasi horizontal
+    globe.rotation.x = Math.sin(t) * 0.05; // efek goyang
+    t += 0.01;
+    renderer.render(scene, camera);
+  }
+  animate();
+</script>
+
+
+
+
                 </div>
             </div>
         </div>
     </div>
-    
-    <!--Tpm About Area End  -->
+</div>
+<!-- End Tentang Kami -->
 
     <!-- working process -->
     <!-- Tmp Servisec Processs Area Two Start -->
@@ -368,30 +475,61 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="single-footer-wrapper pr--15">
                             <h5 class="ft-title">Postingan Terbaru</h5>
-                    
-                            @foreach ($recentPosts as $recent)
-                            <div class="single-post flex items-start gap-3 mb-4">
-                                <div class="thumbnail w-16 h-16 overflow-hidden rounded">
-                                    <a href="{{ route('info.berita.detail', $recent->slug) }}">
-                                        <img src="{{ asset('storage/' . $recent->gambar) }}" alt="{{ $recent->judul }}" class="object-cover w-full h-full">
-                                    </a>
-                                </div>
-                                <div class="content text-sm">
-                                    <div class="date text-gray-500 text-xs mb-1">
-                                        <i class="fa-light fa-calendar-days"></i>
-                                        <span>{{ \Carbon\Carbon::parse($recent->tanggal)->translatedFormat('d M Y') }}</span>
+                            @if ($recentPosts->isEmpty())
+                                <div class="no-recent-post">
+                                    <div class="icon">
+                                        <i class="fa-regular fa-newspaper"></i>
                                     </div>
-                                    <a href="{{ route('info.berita.detail', $recent->slug) }}" class="hover:underline">
-                                        <h6 class="title font-medium leading-snug">
-                                            {{ Str::limit($recent->judul, 50) }}
-                                        </h6>
-                                    </a>
+                                    <p>Belum ada postingan terbaru.</p>
                                 </div>
-                            </div>
-                            @endforeach
-                    
+                            @else
+                                @foreach ($recentPosts as $recent)
+                                    <div class="single-post flex items-start gap-3 mb-4">
+                                        <div class="thumbnail w-16 h-16 overflow-hidden rounded">
+                                            <a href="{{ route('info.berita.detail', $recent->slug) }}">
+                                                <img src="{{ asset('storage/' . $recent->gambar) }}" alt="{{ $recent->judul }}" class="object-cover w-full h-full">
+                                            </a>
+                                        </div>
+                                        <div class="content text-sm">
+                                            <div class="date text-gray-500 text-xs mb-1">
+                                                <i class="fa-light fa-calendar-days"></i>
+                                                <span>{{ \Carbon\Carbon::parse($recent->tanggal)->translatedFormat('d M Y') }}</span>
+                                            </div>
+                                            <a href="{{ route('info.berita.detail', $recent->slug) }}" class="hover:underline">
+                                                <h6 class="title font-medium leading-snug">
+                                                    {{ Str::limit($recent->judul, 50) }}
+                                                </h6>
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
+
+                    <style>
+                        .no-recent-post {
+                        text-align: center;
+                        border: 2px dashed #d1d5db;
+                        border-radius: 8px;
+                        padding: 20px;
+                        background: #f9fbf9;
+                        margin-top: 10px;
+                    }
+
+                    .no-recent-post .icon {
+                        font-size: 32px;
+                        color: #6b7280; /* abu-abu */
+                        margin-bottom: 8px;
+                    }
+
+                    .no-recent-post p {
+                        font-size: 14px;
+                        color: #374151; /* abu gelap */
+                        margin: 0;
+                    }
+
+                    </style>
                     
                     <div class="col-lg-3 col-md-6">
                         <div class="single-footer-wrapper">
